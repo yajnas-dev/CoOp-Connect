@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CoopGig - Job Details</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+<!-- =====================================================
+                         NAVBAR
+====================================================== -->
+
+<header class="navbar">
+
+    <div class="logo">
+        CoopGig
+    </div>
+
+    <div class="worker-name">
+        👷 Worker
+    </div>
+
+</header>
+
+
+<!-- =====================================================
+                         SIDEBAR
+====================================================== -->
+
+<aside class="sidebar">
+
+    <div class="worker-card">
+
+        <div class="worker-icon">
+            👷
+        </div>
+
+        <h3>
+            Worker
+        </h3>
+
+        <p id="sideAvailability">
+            Available for Work
+        </p>
+
+    </div>
+
+
+    <!-- DASHBOARD -->
+
+    <a href="dashboard.html" class="menu">
+        🏠 <span>Dashboard</span>
+    </a>
+
+
+    <!-- REGISTRATION -->
+
+    <a href="registration.html" class="menu">
+        📝 <span>Registration</span>
+    </a>
+
+
+    <!-- PROFILE -->
+
+    <a href="profile.html" class="menu">
+        👤 <span>My Profile</span>
+    </a>
+
+
+    <!-- DOCUMENTS -->
+
+    <a href="documents.html" class="menu">
+        📄 <span>Documents</span>
+    </a>
+
+
+    <!-- FIND JOBS -->
+
+    <a href="jobs.html" class="menu">
+        🔍 <span>Find Jobs</span>
+    </a>
+
+
+    <!-- MY APPLICATIONS -->
+
+    <a href="applications.html" class="menu">
+        📋 <span>My Applications</span>
+    </a>
+
+
+    <!-- JOB DETAILS -->
+
+    <a href="job-details.html" class="menu active">
+        📌 <span>Job Details</span>
+    </a>
+
+
+    <!-- AVAILABILITY -->
+
+    <a href="availability.html" class="menu">
+        🟢 <span>Availability</span>
+    </a>
+
+
+    <!-- EARNINGS -->
+
+    <a href="earnings.html" class="menu">
+        💰 <span>Earnings</span>
+    </a>
+
+
+    <!-- PAYMENTS -->
+
+    <a href="payments.html" class="menu">
+        💳 <span>Payments</span>
+    </a>
+
+
+    <!-- NOTIFICATIONS -->
+
+    <a href="notifications.html" class="menu">
+        🔔 <span>Notifications</span>
+    </a>
+
+
+    <!-- FEEDBACK & RATING -->
+
+    <a href="feedback-rating.html" class="menu">
+        ⭐ <span>Feedback & Rating</span>
+    </a>
+
+
+    <!-- LOGOUT -->
+
+    <a href="../index.html" class="menu logout">
+        🚪 <span>Logout</span>
+    </a>
+
+</aside>
+
+
+<!-- =====================================================
+                         MAIN CONTENT
+====================================================== -->
+
+<main class="main">
+
+<section id="details" class="page active">
+
+    <h1 class="page-title">
+        Job Details
+    </h1>
+
+
+    <div class="section">
+
+        <div class="job">
+
+            <div class="job-header">
+
+                <h3>
+                    ⚡ Electrical Repair
+                </h3>
+
+                <span class="salary">
+                    ₹550
+                </span>
+
+            </div>
+
+
+            <p>
+                👤 Customer: Varsha
+            </p>
+
+            <p>
+                📍 Location: Tirunelveli
+            </p>
+
+            <p>
+                📅 Date: September 10
+            </p>
+
+            <p>
+                ⏰ Time: 10:00 AM
+            </p>
+
+
+            <p>
+                🔧 Service: Electrical repair and wiring
+            </p>
+
+
+            <!-- JOB STATUS FLOW -->
+
+            <div class="job-flow">
+
+                <div class="flow-step active">
+                    Requested
+                </div>
+
+                <div class="flow-arrow">
+                    →
+                </div>
+
+                <div class="flow-step" id="stepProgress">
+                    In Progress
+                </div>
+
+                <div class="flow-arrow">
+                    →
+                </div>
+
+                <div class="flow-step" id="stepCompleted">
+                    Completed
+                </div>
+
+            </div>
+
+
+            <!-- START JOB -->
+
+            <button
+                class="btn"
+                onclick="startJob()">
+
+                Start Job
+
+            </button>
+
+
+            <!-- COMPLETE JOB -->
+
+            <button
+                class="btn"
+                onclick="completeJob()">
+
+                Mark Completed
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+</main>
+
+
+<!-- =====================================================
+                         JAVASCRIPT
+====================================================== -->
+
+<script src="../js/app.js"></script>
+
+</body>
+</html>
