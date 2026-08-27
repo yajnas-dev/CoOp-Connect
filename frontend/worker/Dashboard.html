@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CoopGig - Worker Dashboard</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<header class="navbar">
+
+    <div class="logo">
+        CoopGig
+    </div>
+
+    <div class="worker-name">
+        👷 Worker
+    </div>
+
+</header>
+
+
+<!-- SIDEBAR -->
+
+<aside class="sidebar">
+
+    <div class="worker-card">
+
+        <div class="worker-icon">
+            👷
+        </div>
+
+        <h3>Worker</h3>
+
+        <p id="sideAvailability">
+            Available for Work
+        </p>
+
+    </div>
+
+
+    <a class="menu active" href="dashboard.html">
+        🏠 <span>Dashboard</span>
+    </a>
+
+    <a class="menu" href="registration.html">
+        📝 <span>Registration</span>
+    </a>
+
+    <a class="menu" href="profile.html">
+        👤 <span>My Profile</span>
+    </a>
+
+    <a class="menu" href="documents.html">
+        📄 <span>Documents</span>
+    </a>
+
+    <a class="menu" href="jobs.html">
+        🔍 <span>Find Jobs</span>
+    </a>
+
+    <a class="menu" href="applications.html">
+        📋 <span>My Applications</span>
+    </a>
+
+    <a class="menu" href="job-details.html">
+        📌 <span>Job Details</span>
+    </a>
+
+    <a class="menu" href="availability.html">
+        🟢 <span>Availability</span>
+    </a>
+
+    <a class="menu" href="earnings.html">
+        💰 <span>Earnings</span>
+    </a>
+
+    <a class="menu" href="payments.html">
+        💳 <span>Payments</span>
+    </a>
+
+    <a class="menu" href="notifications.html">
+        🔔 <span>Notifications</span>
+    </a>
+
+    <a class="menu" href="feedback-rating.html">
+        ⭐ <span>Feedback & Rating</span>
+    </a>
+
+    <a class="menu" href="../index.html">
+        🚪 <span>Logout</span>
+    </a>
+
+</aside>
+
+
+<!-- MAIN -->
+
+<main class="main">
+
+    <section id="dashboard" class="page active">
+
+        <h1 class="page-title">
+            Worker Dashboard
+        </h1>
+
+
+        <!-- DASHBOARD CARDS -->
+
+        <div class="cards">
+
+            <div class="card">
+                <h3>Total Jobs</h3>
+                <p id="totalJobs">25</p>
+            </div>
+
+            <div class="card">
+                <h3>Pending Jobs</h3>
+                <p id="pendingJobs">3</p>
+            </div>
+
+            <div class="card">
+                <h3>Completed Jobs</h3>
+                <p id="completedJobs">22</p>
+            </div>
+
+            <div class="card">
+                <h3>Total Earnings</h3>
+                <p>₹8,000</p>
+            </div>
+
+            <div class="card">
+                <h3>Rating</h3>
+                <p>⭐ 4.8</p>
+            </div>
+
+        </div>
+
+
+        <!-- VERIFICATION -->
+
+        <div class="section">
+
+            <h2>
+                Verification Status
+            </h2>
+
+            <span class="badge">
+                ✓ Approved
+            </span>
+
+            <p style="margin-top:15px;">
+                Your worker profile has been verified
+                and is visible to customers.
+            </p>
+
+        </div>
+
+
+        <!-- MY JOBS -->
+
+        <div class="section">
+
+            <h2>
+                My Jobs
+            </h2>
+
+
+            <div class="job">
+
+                <div class="job-header">
+
+                    <h3>
+                        ⚡ Electrical Repair
+                    </h3>
+
+                    <span class="status pending"
+                          id="requestStatus">
+                        New Request
+                    </span>
+
+                </div>
+
+
+                <p>
+                    👤 Customer: Varsha
+                </p>
+
+                <p>
+                    📍 Location: Tirunelveli
+                </p>
+
+                <p>
+                    📅 Date: Sep 10
+                </p>
+
+                <p>
+                    💰 Estimated Wage: ₹550
+                </p>
+
+
+                <button class="btn"
+                        onclick="acceptJob()">
+                    Accept
+                </button>
+
+                <button class="btn btn-danger"
+                        onclick="rejectJob()">
+                    Reject
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<script src="../js/app.js"></script>
+
+</body>
+</html>
