@@ -1,0 +1,1086 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>CoopGig - Worker Registration</title>
+
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+
+        body {
+            background: #f4f7f6;
+            color: #263238;
+        }
+
+
+        /* ================= NAVBAR ================= */
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+
+            width: 100%;
+            height: 72px;
+
+            background: white;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 28px;
+
+            border-bottom: 1px solid #ddd;
+
+            z-index: 1000;
+        }
+
+
+        .logo {
+            font-size: 26px;
+            font-weight: bold;
+            color: #17835f;
+        }
+
+
+        .worker-name {
+            background: #e8f5f0;
+            color: #17835f;
+
+            padding: 11px 22px;
+
+            border-radius: 25px;
+
+            font-weight: bold;
+        }
+
+
+        /* ================= SIDEBAR ================= */
+
+        .sidebar {
+            position: fixed;
+
+            top: 72px;
+            left: 0;
+            bottom: 0;
+
+            width: 230px;
+
+            background: #0d4536;
+
+            padding: 20px 12px;
+
+            overflow-y: auto;
+
+            z-index: 900;
+        }
+
+
+        .worker-card {
+            background: #155845;
+
+            border-radius: 12px;
+
+            text-align: center;
+
+            padding: 18px 10px;
+
+            margin-bottom: 20px;
+
+            color: white;
+        }
+
+
+        .worker-icon {
+            font-size: 42px;
+            margin-bottom: 5px;
+        }
+
+
+        .worker-card h3 {
+            font-size: 19px;
+            margin-bottom: 5px;
+        }
+
+
+        .worker-card p {
+            font-size: 13px;
+            color: #b9eee0;
+        }
+
+
+        .menu {
+            display: flex;
+
+            align-items: center;
+
+            gap: 9px;
+
+            width: 100%;
+
+            padding: 13px 15px;
+
+            margin-bottom: 5px;
+
+            border-radius: 9px;
+
+            color: white;
+
+            text-decoration: none;
+
+            font-size: 15px;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+        }
+
+
+        .menu:hover {
+            background: #17614d;
+        }
+
+
+        .menu.active {
+            background: #e9f5f1;
+
+            color: #137e5c;
+
+            font-weight: bold;
+        }
+
+
+        .logout {
+            margin-top: 15px;
+        }
+
+
+        /* ================= MAIN ================= */
+
+        .main {
+            margin-left: 230px;
+
+            padding: 105px 35px 40px;
+
+            min-height: 100vh;
+        }
+
+
+        .page-title {
+            font-size: 30px;
+
+            color: #183b32;
+
+            margin-bottom: 25px;
+        }
+
+
+        /* ================= SECTION ================= */
+
+        .section {
+            background: white;
+
+            border-radius: 12px;
+
+            padding: 28px;
+
+            margin-bottom: 22px;
+
+            box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+        }
+
+
+        .section h2 {
+            color: #174d3d;
+
+            font-size: 21px;
+
+            margin-bottom: 25px;
+        }
+
+
+        /* ================= FORM ================= */
+
+        .form-grid {
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 20px;
+        }
+
+
+        .form-group {
+            display: flex;
+
+            flex-direction: column;
+        }
+
+
+        .form-group.full {
+            grid-column: 1 / -1;
+        }
+
+
+        label {
+            font-weight: bold;
+
+            margin-bottom: 8px;
+
+            color: #344e47;
+        }
+
+
+        input,
+        textarea {
+            width: 100%;
+
+            padding: 13px 14px;
+
+            border: 1px solid #ccd8d4;
+
+            border-radius: 8px;
+
+            outline: none;
+
+            font-size: 14px;
+
+            background: white;
+
+            transition: 0.2s;
+        }
+
+
+        input:focus,
+        textarea:focus {
+            border-color: #15966d;
+
+            box-shadow: 0 0 0 2px rgba(21,150,109,0.1);
+        }
+
+
+        textarea {
+            min-height: 110px;
+
+            resize: vertical;
+        }
+
+
+        /* ================= BUTTON ================= */
+
+        .btn {
+            margin-top: 25px;
+
+            padding: 13px 25px;
+
+            border: none;
+
+            border-radius: 8px;
+
+            background: #16865f;
+
+            color: white;
+
+            font-size: 15px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+        }
+
+
+        .btn:hover {
+            background: #106b4b;
+        }
+
+
+        .btn:disabled {
+            background: #aaa;
+
+            cursor: not-allowed;
+        }
+
+
+        /* ================= STATUS ================= */
+
+        .status {
+            display: inline-block;
+
+            padding: 8px 15px;
+
+            border-radius: 20px;
+
+            font-size: 14px;
+
+            font-weight: bold;
+        }
+
+
+        .pending {
+            background: #fff3cd;
+
+            color: #856404;
+        }
+
+
+        .approved {
+            background: #d9f5e8;
+
+            color: #147548;
+        }
+
+
+        .rejected {
+            background: #fde0e0;
+
+            color: #a52828;
+        }
+
+
+        .status-text {
+            margin-top: 15px;
+
+            color: #66736f;
+
+            line-height: 1.6;
+        }
+
+
+        /* ================= MESSAGE ================= */
+
+        .message {
+            display: none;
+
+            margin-top: 18px;
+
+            padding: 13px 15px;
+
+            border-radius: 8px;
+
+            font-size: 14px;
+        }
+
+
+        .success-message {
+            background: #e0f6ea;
+
+            color: #176d48;
+        }
+
+
+        .error-message {
+            background: #fde4e4;
+
+            color: #a62b2b;
+        }
+
+
+        /* ================= MOBILE ================= */
+
+        @media (max-width: 800px) {
+
+            .sidebar {
+                width: 190px;
+            }
+
+
+            .main {
+                margin-left: 190px;
+
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+
+            .form-group.full {
+                grid-column: auto;
+            }
+
+        }
+
+
+        @media (max-width: 600px) {
+
+            .sidebar {
+                width: 65px;
+
+                padding: 15px 8px;
+            }
+
+
+            .worker-card h3,
+            .worker-card p,
+            .menu span {
+                display: none;
+            }
+
+
+            .worker-card {
+                padding: 12px 4px;
+            }
+
+
+            .worker-icon {
+                font-size: 30px;
+            }
+
+
+            .menu {
+                justify-content: center;
+
+                padding: 14px 5px;
+            }
+
+
+            .main {
+                margin-left: 65px;
+
+                padding: 95px 15px 30px;
+            }
+
+
+            .navbar {
+                padding: 0 15px;
+            }
+
+
+            .worker-name {
+                padding: 8px 12px;
+            }
+
+
+            .page-title {
+                font-size: 24px;
+            }
+
+
+            .section {
+                padding: 20px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+                         NAVBAR
+====================================================== -->
+
+<header class="navbar">
+
+    <div class="logo">
+        CoopGig
+    </div>
+
+
+    <div class="worker-name">
+        👷 Worker
+    </div>
+
+</header>
+
+
+
+<!-- =====================================================
+                         SIDEBAR
+====================================================== -->
+
+<aside class="sidebar">
+
+
+    <div class="worker-card">
+
+        <div class="worker-icon">
+            👷
+        </div>
+
+        <h3>
+            Worker
+        </h3>
+
+        <p id="sideAvailability">
+            Available for Work
+        </p>
+
+    </div>
+
+
+
+    <a href="dashboard.html"
+       class="menu">
+
+        🏠 <span>Dashboard</span>
+
+    </a>
+
+
+
+    <a href="registration.html"
+       class="menu active">
+
+        📝 <span>Registration</span>
+
+    </a>
+
+
+
+    <a href="profile.html"
+       class="menu">
+
+        👤 <span>My Profile</span>
+
+    </a>
+
+
+
+    <a href="documents.html"
+       class="menu">
+
+        📄 <span>Documents</span>
+
+    </a>
+
+
+
+    <a href="jobs.html"
+       class="menu">
+
+        🔍 <span>Find Jobs</span>
+
+    </a>
+
+
+
+    <a href="applications.html"
+       class="menu">
+
+        📋 <span>My Applications</span>
+
+    </a>
+
+
+
+    <a href="job-details.html"
+       class="menu">
+
+        📌 <span>Job Details</span>
+
+    </a>
+
+
+
+    <a href="availability.html"
+       class="menu">
+
+        🟢 <span>Availability</span>
+
+    </a>
+
+
+
+    <a href="earnings.html"
+       class="menu">
+
+        💰 <span>Earnings</span>
+
+    </a>
+
+
+
+    <a href="payments.html"
+       class="menu">
+
+        💳 <span>Payments</span>
+
+    </a>
+
+
+
+    <a href="notifications.html"
+       class="menu">
+
+        🔔 <span>Notifications</span>
+
+    </a>
+
+
+
+    <a href="feedback-rating.html"
+       class="menu">
+
+        ⭐ <span>Feedback & Rating</span>
+
+    </a>
+
+
+
+    <a href="../index.html"
+       class="menu logout">
+
+        🚪 <span>Logout</span>
+
+    </a>
+
+
+</aside>
+
+
+
+<!-- =====================================================
+                         MAIN CONTENT
+====================================================== -->
+
+<main class="main">
+
+
+    <h1 class="page-title">
+        Worker Registration
+    </h1>
+
+
+
+    <!-- =================================================
+                     REGISTRATION FORM
+    ================================================== -->
+
+    <div class="section">
+
+        <h2>
+            Worker Information
+        </h2>
+
+
+        <form id="registrationForm">
+
+
+            <div class="form-grid">
+
+
+                <!-- NAME -->
+
+                <div class="form-group">
+
+                    <label for="regName">
+                        Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="regName"
+                        placeholder="Enter your name"
+                        required>
+
+                </div>
+
+
+
+                <!-- PHONE -->
+
+                <div class="form-group">
+
+                    <label for="regPhone">
+                        Phone
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="regPhone"
+                        placeholder="Enter phone number"
+                        maxlength="10"
+                        required>
+
+                </div>
+
+
+
+                <!-- EMAIL -->
+
+                <div class="form-group">
+
+                    <label for="regEmail">
+                        Email
+                    </label>
+
+                    <input
+                        type="email"
+                        id="regEmail"
+                        placeholder="Enter email"
+                        required>
+
+                </div>
+
+
+
+                <!-- EXPERIENCE -->
+
+                <div class="form-group">
+
+                    <label for="regExperience">
+                        Experience
+                    </label>
+
+                    <input
+                        type="text"
+                        id="regExperience"
+                        placeholder="Example: 3 Years"
+                        required>
+
+                </div>
+
+
+
+                <!-- ADDRESS -->
+
+                <div class="form-group full">
+
+                    <label for="regAddress">
+                        Address
+                    </label>
+
+                    <textarea
+                        id="regAddress"
+                        placeholder="Enter full address"
+                        required></textarea>
+
+                </div>
+
+
+
+                <!-- SKILLS -->
+
+                <div class="form-group">
+
+                    <label for="regSkills">
+                        Skills
+                    </label>
+
+                    <input
+                        type="text"
+                        id="regSkills"
+                        placeholder="Electrical, Wiring"
+                        required>
+
+                </div>
+
+
+
+                <!-- SERVICE AREA -->
+
+                <div class="form-group">
+
+                    <label for="regArea">
+                        Service Area
+                    </label>
+
+                    <input
+                        type="text"
+                        id="regArea"
+                        placeholder="Tirunelveli"
+                        required>
+
+                </div>
+
+
+            </div>
+
+
+
+            <button
+                type="submit"
+                class="btn"
+                id="registerBtn">
+
+                Register Worker
+
+            </button>
+
+
+
+            <div
+                id="successMessage"
+                class="message success-message">
+
+                ✓ Worker registration submitted successfully!
+
+            </div>
+
+
+            <div
+                id="errorMessage"
+                class="message error-message">
+
+                Please fill all the required fields correctly.
+
+            </div>
+
+
+        </form>
+
+    </div>
+
+
+
+    <!-- =================================================
+                    REGISTRATION STATUS
+    ================================================== -->
+
+    <div class="section">
+
+        <h2>
+            Registration Status
+        </h2>
+
+
+        <span
+            id="registrationStatus"
+            class="status pending">
+
+            Pending Verification
+
+        </span>
+
+
+        <p
+            id="statusDescription"
+            class="status-text">
+
+            Please complete your registration and upload
+            the required documents. After verification,
+            your status will become Approved or Rejected.
+
+        </p>
+
+    </div>
+
+
+</main>
+
+
+
+<!-- =====================================================
+                     JAVASCRIPT
+====================================================== -->
+
+<script>
+
+
+    const form =
+        document.getElementById("registrationForm");
+
+
+    const successMessage =
+        document.getElementById("successMessage");
+
+
+    const errorMessage =
+        document.getElementById("errorMessage");
+
+
+    const status =
+        document.getElementById("registrationStatus");
+
+
+    const statusDescription =
+        document.getElementById("statusDescription");
+
+
+    form.addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+
+        successMessage.style.display = "none";
+        errorMessage.style.display = "none";
+
+
+        const name =
+            document.getElementById("regName").value.trim();
+
+
+        const phone =
+            document.getElementById("regPhone").value.trim();
+
+
+        const email =
+            document.getElementById("regEmail").value.trim();
+
+
+        const experience =
+            document.getElementById("regExperience").value.trim();
+
+
+        const address =
+            document.getElementById("regAddress").value.trim();
+
+
+        const skills =
+            document.getElementById("regSkills").value.trim();
+
+
+        const area =
+            document.getElementById("regArea").value.trim();
+
+
+
+        /* PHONE VALIDATION */
+
+        const phonePattern = /^[0-9]{10}$/;
+
+
+        if (!phonePattern.test(phone)) {
+
+            errorMessage.innerText =
+                "Please enter a valid 10-digit phone number.";
+
+            errorMessage.style.display = "block";
+
+            return;
+        }
+
+
+
+        /* CHECK EMPTY FIELDS */
+
+        if (
+            name === "" ||
+            email === "" ||
+            experience === "" ||
+            address === "" ||
+            skills === "" ||
+            area === ""
+        ) {
+
+            errorMessage.innerText =
+                "Please fill all the required fields.";
+
+            errorMessage.style.display = "block";
+
+            return;
+        }
+
+
+
+        /* SUCCESS */
+
+        successMessage.innerText =
+            "✓ Registration submitted successfully!";
+
+
+        successMessage.style.display = "block";
+
+
+        /* CHANGE STATUS */
+
+        status.className =
+            "status pending";
+
+
+        status.innerText =
+            "Pending Verification";
+
+
+        statusDescription.innerText =
+            "Your registration has been submitted successfully. " +
+            "Your documents will be verified by the cooperative team.";
+
+
+        /* BUTTON */
+
+        const button =
+            document.getElementById("registerBtn");
+
+
+        button.innerText =
+            "Registration Submitted";
+
+
+        button.disabled = true;
+
+
+
+        /* SAVE DATA */
+
+        localStorage.setItem(
+            "workerName",
+            name
+        );
+
+
+        localStorage.setItem(
+            "workerPhone",
+            phone
+        );
+
+
+        localStorage.setItem(
+            "workerEmail",
+            email
+        );
+
+
+        localStorage.setItem(
+            "workerExperience",
+            experience
+        );
+
+
+        localStorage.setItem(
+            "workerAddress",
+            address
+        );
+
+
+        localStorage.setItem(
+            "workerSkills",
+            skills
+        );
+
+
+        localStorage.setItem(
+            "workerArea",
+            area
+        );
+
+
+        localStorage.setItem(
+            "registrationStatus",
+            "Pending Verification"
+        );
+
+    });
+
+
+</script>
+
+
+</body>
+
+</html>
