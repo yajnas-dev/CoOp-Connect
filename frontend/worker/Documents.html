@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CoopGig - Documents</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+<!-- =====================================================
+                         NAVBAR
+====================================================== -->
+
+<header class="navbar">
+
+    <div class="logo">
+        CoopGig
+    </div>
+
+    <div class="worker-name">
+        👷 Worker
+    </div>
+
+</header>
+
+
+<!-- =====================================================
+                         SIDEBAR
+====================================================== -->
+
+<aside class="sidebar">
+
+    <div class="worker-card">
+
+        <div class="worker-icon">
+            👷
+        </div>
+
+        <h3>Worker</h3>
+
+        <p id="sideAvailability">
+            Available for Work
+        </p>
+
+    </div>
+
+
+    <a href="dashboard.html" class="menu">
+        🏠 <span>Dashboard</span>
+    </a>
+
+
+    <a href="registration.html" class="menu">
+        📝 <span>Registration</span>
+    </a>
+
+
+    <a href="profile.html" class="menu">
+        👤 <span>My Profile</span>
+    </a>
+
+
+    <a href="documents.html" class="menu active">
+        📄 <span>Documents</span>
+    </a>
+
+
+    <a href="jobs.html" class="menu">
+        🔍 <span>Find Jobs</span>
+    </a>
+
+
+    <a href="applications.html" class="menu">
+        📋 <span>My Applications</span>
+    </a>
+
+
+    <a href="job-details.html" class="menu">
+        📌 <span>Job Details</span>
+    </a>
+
+
+    <a href="availability.html" class="menu">
+        🟢 <span>Availability</span>
+    </a>
+
+
+    <a href="earnings.html" class="menu">
+        💰 <span>Earnings</span>
+    </a>
+
+
+    <a href="payments.html" class="menu">
+        💳 <span>Payments</span>
+    </a>
+
+
+    <a href="notifications.html" class="menu">
+        🔔 <span>Notifications</span>
+    </a>
+
+
+    <a href="feedback-rating.html" class="menu">
+        ⭐ <span>Feedback & Rating</span>
+    </a>
+
+
+    <a href="../index.html" class="menu logout">
+        🚪 <span>Logout</span>
+    </a>
+
+</aside>
+
+
+<!-- =====================================================
+                         MAIN CONTENT
+====================================================== -->
+
+<main class="main">
+
+<section id="documents" class="page active">
+
+    <h1 class="page-title">
+        Documents & Verification
+    </h1>
+
+
+    <!-- =================================================
+                    REQUIRED DOCUMENTS
+    ================================================== -->
+
+    <div class="section">
+
+        <h2>
+            Required Documents
+        </h2>
+
+
+        <!-- ID PROOF -->
+
+        <div class="document">
+
+            <div>
+
+                <strong>
+                    ID Proof
+                </strong>
+
+                <p>
+                    Government ID / Aadhaar
+                </p>
+
+            </div>
+
+            <span class="doc-approved">
+                ✓ Approved
+            </span>
+
+        </div>
+
+
+        <!-- SKILL CERTIFICATE -->
+
+        <div class="document">
+
+            <div>
+
+                <strong>
+                    Skill Certificate
+                </strong>
+
+                <p>
+                    Electrical / Technical Certificate
+                </p>
+
+            </div>
+
+            <span class="doc-approved">
+                ✓ Approved
+            </span>
+
+        </div>
+
+
+        <!-- ADDRESS PROOF -->
+
+        <div class="document">
+
+            <div>
+
+                <strong>
+                    Address Proof
+                </strong>
+
+                <p>
+                    Valid address verification document
+                </p>
+
+            </div>
+
+            <span class="doc-pending">
+                ⏳ Pending
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+                     UPLOAD DOCUMENT
+    ================================================== -->
+
+    <div class="section">
+
+        <h2>
+            Upload Document
+        </h2>
+
+
+        <div class="form-group">
+
+            <label for="documentFile">
+                Select Document
+            </label>
+
+            <input
+                type="file"
+                id="documentFile"
+            >
+
+        </div>
+
+
+        <button
+            class="btn"
+            onclick="uploadDocument()"
+        >
+            Upload Document
+        </button>
+
+    </div>
+
+</section>
+
+</main>
+
+
+<!-- =====================================================
+                         JAVASCRIPT
+====================================================== -->
+
+<script src="../js/app.js"></script>
+
+</body>
+</html>
