@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CoopGig - Find Jobs</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+<!-- =====================================================
+                         NAVBAR
+====================================================== -->
+
+<header class="navbar">
+
+    <div class="logo">
+        CoopGig
+    </div>
+
+    <div class="worker-name">
+        👷 Worker
+    </div>
+
+</header>
+
+
+<!-- =====================================================
+                         SIDEBAR
+====================================================== -->
+
+<aside class="sidebar">
+
+    <div class="worker-card">
+
+        <div class="worker-icon">
+            👷
+        </div>
+
+        <h3>
+            Worker
+        </h3>
+
+        <p id="sideAvailability">
+            Available for Work
+        </p>
+
+    </div>
+
+
+    <!-- DASHBOARD -->
+
+    <a href="dashboard.html" class="menu">
+        🏠 <span>Dashboard</span>
+    </a>
+
+
+    <!-- REGISTRATION -->
+
+    <a href="registration.html" class="menu">
+        📝 <span>Registration</span>
+    </a>
+
+
+    <!-- PROFILE -->
+
+    <a href="profile.html" class="menu">
+        👤 <span>My Profile</span>
+    </a>
+
+
+    <!-- DOCUMENTS -->
+
+    <a href="documents.html" class="menu">
+        📄 <span>Documents</span>
+    </a>
+
+
+    <!-- FIND JOBS -->
+
+    <a href="jobs.html" class="menu active">
+        🔍 <span>Find Jobs</span>
+    </a>
+
+
+    <!-- MY APPLICATIONS -->
+
+    <a href="applications.html" class="menu">
+        📋 <span>My Applications</span>
+    </a>
+
+
+    <!-- JOB DETAILS -->
+
+    <a href="job-details.html" class="menu">
+        📌 <span>Job Details</span>
+    </a>
+
+
+    <!-- AVAILABILITY -->
+
+    <a href="availability.html" class="menu">
+        🟢 <span>Availability</span>
+    </a>
+
+
+    <!-- EARNINGS -->
+
+    <a href="earnings.html" class="menu">
+        💰 <span>Earnings</span>
+    </a>
+
+
+    <!-- PAYMENTS -->
+
+    <a href="payments.html" class="menu">
+        💳 <span>Payments</span>
+    </a>
+
+
+    <!-- NOTIFICATIONS -->
+
+    <a href="notifications.html" class="menu">
+        🔔 <span>Notifications</span>
+    </a>
+
+
+    <!-- FEEDBACK & RATING -->
+
+    <a href="feedback-rating.html" class="menu">
+        ⭐ <span>Feedback & Rating</span>
+    </a>
+
+
+    <!-- LOGOUT -->
+
+    <a href="../index.html" class="menu logout">
+        🚪 <span>Logout</span>
+    </a>
+
+</aside>
+
+
+<!-- =====================================================
+                         MAIN CONTENT
+====================================================== -->
+
+<main class="main">
+
+<section id="jobs" class="page active">
+
+    <h1 class="page-title">
+        Find Jobs
+    </h1>
+
+
+    <!-- =================================================
+                    SEARCH AVAILABLE JOBS
+    ================================================== -->
+
+    <div class="section">
+
+        <h2>
+            Search Available Jobs
+        </h2>
+
+
+        <div class="search-box">
+
+            <!-- SEARCH -->
+
+            <input
+                type="text"
+                id="searchJob"
+                placeholder="Search job..."
+                onkeyup="searchJobs()"
+            >
+
+
+            <!-- SKILL FILTER -->
+
+            <select
+                id="skillFilter"
+                onchange="searchJobs()"
+            >
+
+                <option value="">
+                    All Skills
+                </option>
+
+                <option value="Electrician">
+                    Electrician
+                </option>
+
+                <option value="Plumber">
+                    Plumber
+                </option>
+
+                <option value="Carpenter">
+                    Carpenter
+                </option>
+
+            </select>
+
+
+            <!-- LOCATION FILTER -->
+
+            <input
+                type="text"
+                id="locationFilter"
+                placeholder="Location"
+                onkeyup="searchJobs()"
+            >
+
+        </div>
+
+
+        <!-- =================================================
+                            JOB LIST
+        ================================================== -->
+
+        <div id="jobList">
+
+
+            <!-- ELECTRICAL JOB -->
+
+            <div
+                class="job"
+                data-skill="Electrician"
+                data-location="Tirunelveli"
+            >
+
+                <div class="job-header">
+
+                    <h3>
+                        ⚡ Electrical Repair
+                    </h3>
+
+                    <span class="salary">
+                        ₹550
+                    </span>
+
+                </div>
+
+
+                <p>
+                    👤 Customer: Varsha
+                </p>
+
+                <p>
+                    📍 Tirunelveli
+                </p>
+
+                <p>
+                    📅 Sep 10
+                </p>
+
+                <p>
+                    🔧 Electrical repair and wiring.
+                </p>
+
+
+                <button
+                    class="btn"
+                    onclick="applyJob('Electrical Repair')"
+                >
+                    Apply Now
+                </button>
+
+            </div>
+
+
+            <!-- PLUMBING JOB -->
+
+            <div
+                class="job"
+                data-skill="Plumber"
+                data-location="Valliyur"
+            >
+
+                <div class="job-header">
+
+                    <h3>
+                        🔧 Plumbing Repair
+                    </h3>
+
+                    <span class="salary">
+                        ₹700
+                    </span>
+
+                </div>
+
+
+                <p>
+                    👤 Customer: Arun
+                </p>
+
+                <p>
+                    📍 Valliyur
+                </p>
+
+                <p>
+                    📅 Sep 12
+                </p>
+
+                <p>
+                    🚰 Pipe and bathroom maintenance.
+                </p>
+
+
+                <button
+                    class="btn"
+                    onclick="applyJob('Plumbing Repair')"
+                >
+                    Apply Now
+                </button>
+
+            </div>
+
+
+            <!-- CARPENTER JOB -->
+
+            <div
+                class="job"
+                data-skill="Carpenter"
+                data-location="Tirunelveli"
+            >
+
+                <div class="job-header">
+
+                    <h3>
+                        🪚 Carpenter Work
+                    </h3>
+
+                    <span class="salary">
+                        ₹900
+                    </span>
+
+                </div>
+
+
+                <p>
+                    👤 Customer: Kumar
+                </p>
+
+                <p>
+                    📍 Tirunelveli
+                </p>
+
+                <p>
+                    📅 Sep 15
+                </p>
+
+
+                <button
+                    class="btn"
+                    onclick="applyJob('Carpenter Work')"
+                >
+                    Apply Now
+                </button>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+</main>
+
+
+<!-- =====================================================
+                         JAVASCRIPT
+====================================================== -->
+
+<script src="../js/app.js"></script>
+
+</body>
+</html>
