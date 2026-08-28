@@ -3211,3 +3211,915 @@ body {
     }
 
 }
+/* =====================================================
+                     GLOBAL
+===================================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#f5f7f6;
+    color:#1f2937;
+    min-height:100vh;
+}
+
+
+/* =====================================================
+                     NAVBAR
+===================================================== */
+
+.navbar{
+    height:65px;
+    background:#ffffff;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 25px;
+    border-bottom:1px solid #dfe7e3;
+    box-shadow:0 2px 8px rgba(0,0,0,0.04);
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    z-index:1000;
+}
+
+.logo{
+    font-size:24px;
+    font-weight:bold;
+    color:#16805c;
+}
+
+.worker-name{
+    background:#e8f5ef;
+    color:#16805c;
+    padding:10px 18px;
+    border-radius:20px;
+    font-weight:bold;
+}
+
+
+/* =====================================================
+                     SIDEBAR
+===================================================== */
+
+.sidebar {
+    position: fixed;
+
+    top: 72px;
+    left: 0;
+    bottom: 0;
+
+    width: 230px;
+
+    background: #0d4536;
+
+    padding: 20px 12px;
+
+    overflow-y: auto;
+
+    z-index: 900;
+}
+
+
+.worker-card {
+    background: #155845;
+
+    border-radius: 12px;
+
+    text-align: center;
+
+    padding: 18px 10px;
+
+    margin-bottom: 20px;
+
+    color: white;
+}
+
+
+.worker-icon {
+    font-size: 42px;
+    margin-bottom: 5px;
+}
+
+
+.worker-card h3 {
+    font-size: 19px;
+    margin-bottom: 5px;
+}
+
+
+.worker-card p {
+    font-size: 13px;
+    color: #b9eee0;
+}
+
+
+.menu {
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    width: 100%;
+
+    padding: 13px 15px;
+
+    margin-bottom: 5px;
+
+    border-radius: 9px;
+
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 15px;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+
+.menu:hover {
+    background: #17614d;
+}
+
+
+.menu.active {
+    background: #e9f5f1;
+
+    color: #137e5c;
+
+    font-weight: bold;
+}
+
+
+.logout {
+    margin-top: 15px;
+}
+
+
+/* =====================================================
+                     MAIN
+===================================================== */
+
+.main{
+    margin-left:230px;
+    padding:95px 30px 30px;
+}
+
+.page{
+    display:none;
+}
+
+.page.active{
+    display:block;
+}
+
+.page-title{
+    font-size:28px;
+    margin-bottom:25px;
+    color:#123c2f;
+}
+
+
+/* =====================================================
+                     CARDS
+===================================================== */
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:18px;
+    margin-bottom:30px;
+}
+
+.card{
+    background:#ffffff;
+    padding:22px;
+    border-radius:15px;
+    border:1px solid #dfe7e3;
+    box-shadow:0 4px 12px rgba(18,60,47,0.06);
+    transition:0.2s;
+}
+
+.card:hover{
+    transform:translateY(-2px);
+    box-shadow:0 7px 18px rgba(18,60,47,0.10);
+}
+
+.card h3{
+    color:#66756f;
+    font-size:14px;
+}
+
+.card p{
+    font-size:25px;
+    font-weight:bold;
+    margin-top:10px;
+    color:#16805c;
+}
+
+
+/* =====================================================
+                     SECTIONS
+===================================================== */
+
+.section{
+    background:#ffffff;
+    padding:25px;
+    border-radius:15px;
+    margin-bottom:20px;
+    border:1px solid #dfe7e3;
+    box-shadow:0 4px 12px rgba(18,60,47,0.05);
+}
+
+.section h2{
+    margin-bottom:18px;
+    color:#123c2f;
+}
+
+.section p{
+    color:#52635c;
+    line-height:1.6;
+}
+
+
+/* =====================================================
+                     FORM
+===================================================== */
+
+.form-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:15px;
+}
+
+.form-group{
+    margin-bottom:5px;
+}
+
+.form-group.full{
+    grid-column:1/-1;
+}
+
+label{
+    color:#42534d;
+    display:block;
+    font-weight:600;
+}
+
+input,
+select,
+textarea{
+    width:100%;
+    padding:13px;
+    background:#ffffff;
+    color:#1f2937;
+    border:1px solid #cfdad5;
+    border-radius:8px;
+    margin-top:6px;
+    outline:none;
+    transition:0.2s;
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+    border-color:#16805c;
+    box-shadow:0 0 0 3px #e8f5ef;
+}
+
+input::placeholder,
+textarea::placeholder{
+    color:#9aa7a2;
+}
+
+textarea{
+    resize:none;
+    height:100px;
+}
+
+input[type="file"]{
+    padding:10px;
+}
+
+
+/* =====================================================
+                     BUTTON
+===================================================== */
+
+.btn{
+    border:none;
+    padding:11px 20px;
+    background:#16805c;
+    color:#ffffff;
+    font-weight:bold;
+    border-radius:8px;
+    cursor:pointer;
+    margin-top:15px;
+    transition:0.2s;
+}
+
+.btn:hover{
+    background:#1c7155;
+    transform:translateY(-1px);
+}
+
+.btn-secondary{
+    background:#e8f5ef;
+    color:#16805c;
+}
+
+.btn-secondary:hover{
+    background:#d9eee5;
+}
+
+.btn-danger{
+    background:#d9534f;
+    color:white;
+}
+
+.btn-danger:hover{
+    background:#c74340;
+}
+
+
+/* =====================================================
+                     JOB
+===================================================== */
+
+.job{
+    background:#f8fbf9;
+    padding:18px;
+    border-radius:12px;
+    margin-bottom:15px;
+    border:1px solid #dce8e2;
+}
+
+.job-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:12px;
+    gap:10px;
+}
+
+.job-header h3{
+    color:#123c2f;
+}
+
+.job p{
+    margin:7px 0;
+    color:#52635c;
+}
+
+.salary{
+    font-weight:bold;
+    color:#16805c;
+    font-size:18px;
+}
+
+
+/* =====================================================
+                     STATUS
+===================================================== */
+
+.status{
+    display:inline-block;
+    padding:6px 12px;
+    border-radius:15px;
+    font-size:12px;
+    font-weight:bold;
+}
+
+.pending{
+    background:#fff4d6;
+    color:#a66b00;
+}
+
+.accepted{
+    background:#e8f7f1;
+    color:#16805c;
+}
+
+.rejected{
+    background:#fdecec;
+    color:#c0392b;
+}
+
+
+/* =====================================================
+                     BADGE
+===================================================== */
+
+.badge{
+    display:inline-block;
+    background:#e8f5ef;
+    color:#16805c;
+    padding:6px 12px;
+    border-radius:15px;
+    font-size:12px;
+    margin-top:8px;
+    font-weight:bold;
+}
+
+
+/* =====================================================
+                     TABLE
+===================================================== */
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    background:#ffffff;
+    border-radius:10px;
+    overflow:hidden;
+}
+
+th{
+    background:#e8f5ef;
+    color:#123c2f;
+    padding:14px;
+    text-align:left;
+    font-size:14px;
+}
+
+td{
+    padding:14px;
+    border-bottom:1px solid #e8eeeb;
+    color:#52635c;
+}
+
+tr:hover td{
+    background:#f8fbf9;
+}
+
+.paid{
+    color:#16805c;
+    font-weight:bold;
+}
+
+
+/* =====================================================
+                     PROFILE
+===================================================== */
+
+.profile-top{
+    display:flex;
+    align-items:center;
+    gap:25px;
+    margin-bottom:30px;
+}
+
+.profile-photo{
+    width:110px;
+    height:110px;
+    border-radius:50%;
+    background:#e8f5ef;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:55px;
+}
+
+.profile-info h2{
+    color:#123c2f;
+    margin-bottom:8px;
+}
+
+.profile-info p{
+    color:#52635c;
+    margin:5px 0;
+}
+
+
+/* =====================================================
+                     AVAILABILITY
+===================================================== */
+
+.availability-box{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:#f8fbf9;
+    padding:20px;
+    border:1px solid #dce8e2;
+    border-radius:12px;
+}
+
+.availability-box h2{
+    color:#16805c;
+}
+
+.switch{
+    width:58px;
+    height:30px;
+    background:#b8c2be;
+    border-radius:20px;
+    cursor:pointer;
+    position:relative;
+}
+
+.switch.active{
+    background:#16805c;
+}
+
+.switch-circle{
+    width:24px;
+    height:24px;
+    background:white;
+    border-radius:50%;
+    position:absolute;
+    top:3px;
+    left:4px;
+    transition:.2s;
+    box-shadow:0 2px 5px rgba(0,0,0,0.15);
+}
+
+.switch.active .switch-circle{
+    left:30px;
+}
+
+
+/* =====================================================
+                     DOCUMENTS
+===================================================== */
+
+.document{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:#f8fbf9;
+    padding:16px;
+    border:1px solid #dce8e2;
+    border-radius:10px;
+    margin-bottom:12px;
+}
+
+.document p{
+    font-size:13px;
+    color:#788781;
+}
+
+.doc-approved{
+    color:#16805c;
+    font-weight:bold;
+}
+
+.doc-pending{
+    color:#b77900;
+    font-weight:bold;
+}
+
+.doc-rejected{
+    color:#d64545;
+    font-weight:bold;
+}
+
+
+/* =====================================================
+                     RATING
+===================================================== */
+
+.rating{
+    font-size:28px;
+    color:#f4b400;
+    margin:10px 0;
+}
+
+
+/* =====================================================
+                     NOTIFICATION
+===================================================== */
+
+.notification{
+    background:#f8fbf9;
+    padding:16px;
+    border-radius:10px;
+    border:1px solid #dce8e2;
+    margin-bottom:12px;
+}
+
+.notification strong{
+    color:#16805c;
+}
+
+.notification p{
+    margin-top:5px;
+}
+
+
+/* =====================================================
+                     JOB FLOW
+===================================================== */
+
+.job-flow{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+    margin:25px 0;
+}
+
+.flow-step{
+    flex:1;
+    text-align:center;
+    padding:14px;
+    border-radius:10px;
+    background:#f1f6f3;
+    border:1px solid #d5e2dc;
+    color:#52635c;
+}
+
+.flow-step.active{
+    background:#e8f5ef;
+    color:#16805c;
+    border-color:#16805c;
+    font-weight:bold;
+}
+
+.flow-arrow{
+    color:#16805c;
+    font-size:20px;
+}
+
+
+/* =====================================================
+                     SEARCH BOX
+===================================================== */
+
+.search-box{
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr;
+    gap:12px;
+    margin-bottom:20px;
+}
+
+
+/* =====================================================
+                     SCROLLBAR
+===================================================== */
+
+.sidebar::-webkit-scrollbar{
+    width:6px;
+}
+
+.sidebar::-webkit-scrollbar-thumb{
+    background:#2b6a55;
+    border-radius:10px;
+}
+
+
+/* =====================================================
+                     MOBILE
+===================================================== */
+
+@media(max-width:1100px){
+
+    .cards{
+        grid-template-columns:repeat(3,1fr);
+    }
+
+}
+
+@media(max-width:850px){
+
+    .sidebar{
+        width:70px;
+    }
+
+    .worker-card h3,
+    .worker-card p,
+    .menu span{
+        display:none;
+    }
+
+    .main{
+        margin-left:70px;
+        padding:85px 20px 20px;
+    }
+
+    .cards{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .search-box{
+        grid-template-columns:1fr;
+    }
+
+}
+
+@media(max-width:600px){
+
+    .navbar{
+        padding:0 15px;
+    }
+
+    .logo{
+        font-size:20px;
+    }
+
+    .worker-name{
+        padding:8px 12px;
+        font-size:13px;
+    }
+
+    .cards{
+        grid-template-columns:1fr;
+    }
+
+    .form-grid{
+        grid-template-columns:1fr;
+    }
+
+    .form-group.full{
+        grid-column:auto;
+    }
+
+    .profile-top{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .job-flow{
+        flex-direction:column;
+    }
+
+    .flow-step{
+        width:100%;
+    }
+
+    .flow-arrow{
+        transform:rotate(90deg);
+    }
+
+    table{
+        display:block;
+        overflow-x:auto;
+        white-space:nowrap;
+    }
+
+}
+/* =========================================
+   FIX FOR ALL WORKER PAGES
+========================================= */
+
+main {
+    margin-left: 230px;
+    padding: 95px 30px 40px 30px;
+    width: calc(100% - 230px);
+    min-height: calc(100vh - 72px);
+}
+
+
+/* Page heading */
+
+.page-title {
+    margin-bottom: 25px;
+}
+
+
+/* Main sections */
+
+.section {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+
+/* Forms */
+
+.form-grid {
+    width: 100%;
+}
+
+
+/* Cards */
+
+.cards {
+    width: 100%;
+}
+
+
+/* Tables */
+
+table {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+
+/* Prevent content from going underneath sidebar */
+
+input,
+textarea,
+select,
+button {
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 900px) {
+
+    main {
+        margin-left: 230px;
+        width: calc(100% - 230px);
+        padding: 95px 20px 30px;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .sidebar {
+        width: 70px;
+    }
+
+    main {
+        margin-left: 70px;
+        width: calc(100% - 70px);
+        padding: 90px 15px 25px;
+    }
+
+}
+/* =========================================
+   WORKER MULTI PAGE LAYOUT FIX
+========================================= */
+
+main {
+    margin-left: 230px !important;
+    padding: 95px 30px 40px !important;
+    width: calc(100% - 230px) !important;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+
+/* Make all content fit inside main area */
+
+.section {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.cards {
+    width: 100%;
+}
+
+.form-grid {
+    width: 100%;
+}
+
+table {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+
+/* Prevent large elements from overflowing */
+
+input,
+textarea,
+select {
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 700px) {
+
+    .sidebar {
+        width: 70px;
+    }
+
+    main {
+        margin-left: 70px !important;
+        width: calc(100% - 70px) !important;
+        padding: 90px 15px 30px !important;
+    }
+
+    .worker-card h3,
+    .worker-card p,
+    .menu span {
+        display: none;
+    }
+
+}
