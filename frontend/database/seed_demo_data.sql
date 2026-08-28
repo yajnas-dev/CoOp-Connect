@@ -744,3 +744,279 @@ AND NOT EXISTS
 -- ============================================================
 -- END OF DEMO DATA
 -- ============================================================
+-- ============================================================
+-- CoopGig - Demo Seed Data
+-- File: seed_demo_data.sql
+-- ============================================================
+
+-- ============================================================
+-- WORKERS
+-- ============================================================
+
+INSERT INTO workers
+    (id, name, phone, email, experience, address, skills, service_area, availability, status)
+VALUES
+    (1,
+     'Worker',
+     '+91 9876543210',
+     'worker@email.com',
+     '3 Years',
+     'Tirunelveli, Tamil Nadu',
+     'Electrical, Wiring, Maintenance',
+     'Tirunelveli',
+     TRUE,
+     'Approved');
+
+
+-- ============================================================
+-- CUSTOMERS
+-- ============================================================
+
+INSERT INTO customers
+    (id, name, phone, email, location)
+VALUES
+    (1, 'Varsha', '+91 9000000001', 'varsha@email.com', 'Tirunelveli'),
+    (2, 'Arun', '+91 9000000002', 'arun@email.com', 'Valliyur'),
+    (3, 'Kumar', '+91 9000000003', 'kumar@email.com', 'Tirunelveli');
+
+
+-- ============================================================
+-- JOBS
+-- ============================================================
+
+INSERT INTO jobs
+    (id, customer_id, title, skill, location, job_date, job_time,
+     description, wage, status)
+VALUES
+    (1,
+     1,
+     'Electrical Repair',
+     'Electrician',
+     'Tirunelveli',
+     '2026-09-10',
+     '10:00:00',
+     'Electrical repair and wiring.',
+     550,
+     'Open'),
+
+    (2,
+     2,
+     'Plumbing Repair',
+     'Plumber',
+     'Valliyur',
+     '2026-09-12',
+     '11:00:00',
+     'Pipe and bathroom maintenance.',
+     700,
+     'Open'),
+
+    (3,
+     3,
+     'Carpenter Work',
+     'Carpenter',
+     'Tirunelveli',
+     '2026-09-15',
+     '09:30:00',
+     'General carpenter work.',
+     900,
+     'Open');
+
+
+-- ============================================================
+-- JOB APPLICATIONS
+-- ============================================================
+
+INSERT INTO applications
+    (id, worker_id, job_id, applied_date, status)
+VALUES
+    (1,
+     1,
+     1,
+     '2026-09-05',
+     'Accepted'),
+
+    (2,
+     1,
+     2,
+     '2026-09-06',
+     'Pending');
+
+
+-- ============================================================
+-- WORKER DOCUMENTS
+-- ============================================================
+
+INSERT INTO worker_documents
+    (id, worker_id, document_type, document_name, status)
+VALUES
+    (1,
+     1,
+     'ID Proof',
+     'Government ID / Aadhaar',
+     'Approved'),
+
+    (2,
+     1,
+     'Skill Certificate',
+     'Electrical / Technical Certificate',
+     'Approved'),
+
+    (3,
+     1,
+     'Address Proof',
+     'Address Verification Document',
+     'Pending');
+
+
+-- ============================================================
+-- WORKER JOB STATUS
+-- ============================================================
+
+INSERT INTO worker_jobs
+    (id, worker_id, job_id, job_status)
+VALUES
+    (1,
+     1,
+     1,
+     'Requested');
+
+
+-- ============================================================
+-- EARNINGS
+-- ============================================================
+
+INSERT INTO earnings
+    (id, worker_id, job_id, amount, earning_date, status)
+VALUES
+    (1,
+     1,
+     1,
+     550,
+     '2026-09-05',
+     'Paid'),
+
+    (2,
+     1,
+     2,
+     2000,
+     '2026-08-28',
+     'Paid');
+
+
+-- ============================================================
+-- PAYMENTS
+-- ============================================================
+
+INSERT INTO payments
+    (id, worker_id, job_id, amount, payment_date, status)
+VALUES
+    (1,
+     1,
+     1,
+     2500,
+     '2026-09-01',
+     'Paid'),
+
+    (2,
+     1,
+     2,
+     2000,
+     '2026-08-28',
+     'Paid'),
+
+    (3,
+     1,
+     NULL,
+     3000,
+     '2026-09-04',
+     'Pending');
+
+
+-- ============================================================
+-- NOTIFICATIONS
+-- ============================================================
+
+INSERT INTO notifications
+    (id, worker_id, title, message, notification_type, is_read)
+VALUES
+    (1,
+     1,
+     'New Job Request',
+     'Varsha sent you an Electrical Repair request in Tirunelveli.',
+     'Job Request',
+     FALSE),
+
+    (2,
+     1,
+     'Job Accepted',
+     'Your Electrical Repair job has been accepted.',
+     'Job Update',
+     FALSE),
+
+    (3,
+     1,
+     'Payment Received',
+     '₹550 payment has been added to your earnings.',
+     'Payment',
+     FALSE),
+
+    (4,
+     1,
+     'New Rating',
+     'Customer gave you a 5-star rating.',
+     'Rating',
+     FALSE),
+
+    (5,
+     1,
+     'Profile Verified',
+     'Your worker profile has been approved.',
+     'Verification',
+     TRUE);
+
+
+-- ============================================================
+-- FEEDBACK & RATINGS
+-- ============================================================
+
+INSERT INTO ratings
+    (id, worker_id, customer_id, job_id, rating, feedback)
+VALUES
+    (1,
+     1,
+     1,
+     1,
+     5,
+     'Good quality work and completed on time.'),
+
+    (2,
+     1,
+     2,
+     2,
+     5,
+     'Professional and friendly worker.'),
+
+    (3,
+     1,
+     3,
+     NULL,
+     4,
+     'Good service.');
+
+
+-- ============================================================
+-- WORKING HOURS
+-- ============================================================
+
+INSERT INTO worker_working_hours
+    (id, worker_id, start_time, end_time)
+VALUES
+    (1,
+     1,
+     '09:00:00',
+     '18:00:00');
+
+
+-- ============================================================
+-- END OF DEMO DATA
+-- ============================================================
