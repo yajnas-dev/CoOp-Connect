@@ -195,3 +195,452 @@ if (loginForm) {
     });
 
 }
+/* ================= PAGE NAVIGATION ================= */
+
+function showPage(pageId, element){
+
+    let pages =
+        document.querySelectorAll(".page");
+
+    pages.forEach(function(page){
+
+        page.classList.remove("active");
+
+    });
+
+
+    document
+        .getElementById(pageId)
+        .classList.add("active");
+
+
+    let menus =
+        document.querySelectorAll(".menu");
+
+    menus.forEach(function(menu){
+
+        menu.classList.remove("active");
+
+    });
+
+
+    element.classList.add("active");
+
+}
+
+
+/* ================= REGISTRATION ================= */
+
+function registerWorker(){
+
+    let name =
+        document.getElementById("regName").value;
+
+    let phone =
+        document.getElementById("regPhone").value;
+
+    let email =
+        document.getElementById("regEmail").value;
+
+    let area =
+        document.getElementById("regArea").value;
+
+
+    if(
+        name === "" ||
+        phone === "" ||
+        email === "" ||
+        area === ""
+    ){
+
+        alert(
+            "Please fill all required fields."
+        );
+
+        return;
+
+    }
+
+
+    document.getElementById(
+        "profileName"
+    ).value = name;
+
+
+    document.getElementById(
+        "profileDisplayName"
+    ).innerText = name;
+
+
+    alert(
+        "Worker Registration Submitted Successfully!\n\n" +
+        "Status: Pending Verification"
+    );
+
+}
+
+
+/* ================= PROFILE ================= */
+
+function saveProfile(){
+
+    let name =
+        document.getElementById("profileName").value;
+
+
+    if(name !== ""){
+
+        document.getElementById(
+            "profileDisplayName"
+        ).innerText = name;
+
+    }
+
+
+    alert(
+        "Worker Profile Updated Successfully! ✅"
+    );
+
+}
+
+
+/* ================= DOCUMENT ================= */
+
+function uploadDocument(){
+
+    let file =
+        document.getElementById(
+            "documentFile"
+        ).files[0];
+
+
+    if(!file){
+
+        alert(
+            "Please select a document first."
+        );
+
+        return;
+
+    }
+
+
+    alert(
+        "Document uploaded successfully!\n" +
+        "Status: Pending Verification"
+    );
+
+}
+
+
+/* ================= ACCEPT JOB ================= */
+
+function acceptJob(){
+
+    let status =
+        document.getElementById(
+            "requestStatus"
+        );
+
+
+    status.innerText = "Accepted";
+
+    status.className =
+        "status accepted";
+
+
+    alert(
+        "Job Accepted Successfully! ✅"
+    );
+
+}
+
+
+/* ================= REJECT JOB ================= */
+
+function rejectJob(){
+
+    let status =
+        document.getElementById(
+            "requestStatus"
+        );
+
+
+    status.innerText = "Rejected";
+
+    status.className =
+        "status rejected";
+
+
+    alert(
+        "Job Request Rejected."
+    );
+
+}
+
+
+/* ================= APPLY JOB ================= */
+
+function applyJob(jobName){
+
+    let confirmApply =
+        confirm(
+            "Do you want to apply for " +
+            jobName + "?"
+        );
+
+
+    if(confirmApply){
+
+        let count =
+            document.getElementById(
+                "pendingJobs"
+            );
+
+
+        count.innerText =
+            parseInt(count.innerText) + 1;
+
+
+        alert(
+            "Application submitted successfully! ✅"
+        );
+
+    }
+
+}
+
+
+/* ================= START JOB ================= */
+
+function startJob(){
+
+    document.getElementById(
+        "stepProgress"
+    ).classList.add("active");
+
+
+    alert(
+        "Job status updated to In Progress."
+    );
+
+}
+
+
+/* ================= COMPLETE JOB ================= */
+
+function completeJob(){
+
+    document.getElementById(
+        "stepCompleted"
+    ).classList.add("active");
+
+
+    alert(
+        "Job marked as Completed! ✅"
+    );
+
+}
+
+
+/* ================= AVAILABILITY ================= */
+
+function toggleAvailability(){
+
+    let switchElement =
+        document.getElementById(
+            "availabilitySwitch"
+        );
+
+
+    let text =
+        document.getElementById(
+            "availabilityText"
+        );
+
+
+    let sideText =
+        document.getElementById(
+            "sideAvailability"
+        );
+
+
+    switchElement.classList.toggle("active");
+
+
+    if(
+        switchElement.classList.contains("active")
+    ){
+
+        text.innerText = "Available";
+
+        sideText.innerText =
+            "Available for Work";
+
+    }
+    else{
+
+        text.innerText = "Unavailable";
+
+        sideText.innerText =
+            "Unavailable";
+
+    }
+
+}
+
+
+/* ================= WORKING HOURS ================= */
+
+function saveHours(){
+
+    alert(
+        "Working hours saved successfully! ✅"
+    );
+
+}
+
+
+/* ================= SEARCH JOBS ================= */
+
+function searchJobs(){
+
+    let search =
+        document.getElementById(
+            "searchJob"
+        ).value.toLowerCase();
+
+
+    let skill =
+        document.getElementById(
+            "skillFilter"
+        ).value.toLowerCase();
+
+
+    let location =
+        document.getElementById(
+            "locationFilter"
+        ).value.toLowerCase();
+
+
+    let jobs =
+        document.querySelectorAll(
+            "#jobList .job"
+        );
+
+
+    jobs.forEach(function(job){
+
+        let text =
+            job.innerText.toLowerCase();
+
+
+        let jobSkill =
+            job.dataset.skill
+            ? job.dataset.skill.toLowerCase()
+            : "";
+
+
+        let jobLocation =
+            job.dataset.location
+            ? job.dataset.location.toLowerCase()
+            : "";
+
+
+        let searchMatch =
+            text.includes(search);
+
+
+        let skillMatch =
+            skill === "" ||
+            jobSkill === skill;
+
+
+        let locationMatch =
+            location === "" ||
+            jobLocation.includes(location);
+
+
+        if(
+            searchMatch &&
+            skillMatch &&
+            locationMatch
+        ){
+
+            job.style.display = "block";
+
+        }
+        else{
+
+            job.style.display = "none";
+
+        }
+
+    });
+
+}
+
+
+/* ================= LOGOUT ================= */
+
+function logout(){
+
+    let confirmLogout =
+        confirm(
+            "Are you sure you want to logout?"
+        );
+
+
+    if(confirmLogout){
+
+        alert(
+            "Logged out successfully!"
+        );
+
+        location.reload();
+
+    }
+
+}
+/* =========================================
+   WORKER MULTI PAGE NAVIGATION
+========================================= */
+
+function showPage(page, element) {
+
+    const pages = {
+
+        dashboard: "dashboard.html",
+
+        registration: "registration.html",
+
+        profile: "profile.html",
+
+        documents: "documents.html",
+
+        jobs: "jobs.html",
+
+        applications: "applications.html",
+
+        details: "job-details.html",
+
+        availability: "availability.html",
+
+        earnings: "earnings.html",
+
+        payment: "payments.html",
+
+        notifications: "notifications.html",
+
+        rating: "feedback-rating.html"
+
+    };
+
+
+    if (pages[page]) {
+
+        window.location.href = pages[page];
+
+    }
+
+}
