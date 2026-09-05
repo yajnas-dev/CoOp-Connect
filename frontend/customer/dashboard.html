@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Customer Dashboard | Co-Op Connect</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body class="dashboard-body">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+
+        <div class="sidebar-brand">
+            <span class="brand-icon">🤝</span>
+            <div>
+                <h2>Co-Op Connect</h2>
+                <small>Customer</small>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+
+            <a href="dashboard.html" class="nav-item active">
+                🏠 <span>Dashboard</span>
+            </a>
+
+            <a href="services.html" class="nav-item">
+                🔧 <span>Find Services</span>
+            </a>
+
+            <a href="workers.html" class="nav-item">
+                👷 <span>Find Workers</span>
+            </a>
+
+            <a href="bookings.html" class="nav-item">
+                📅 <span>My Bookings</span>
+            </a>
+
+            <a href="payments.html" class="nav-item">
+                💳 <span>Payments</span>
+            </a>
+
+            <a href="reviews.html" class="nav-item">
+                ⭐ <span>My Reviews</span>
+            </a>
+
+            <a href="complaints.html" class="nav-item">
+                ⚠️ <span>Complaints</span>
+            </a>
+
+            <a href="profile.html" class="nav-item">
+                👤 <span>My Profile</span>
+            </a>
+
+        </nav>
+
+        <button class="logout-btn" onclick="logout()">
+            🚪 Logout
+        </button>
+
+    </aside>
+
+
+    <!-- Main Content -->
+    <main class="dashboard-main">
+
+        <!-- Top Header -->
+        <header class="dashboard-header">
+
+            <div>
+                <h1>Welcome back, Varsha! 👋</h1>
+                <p>Find trusted cooperative workers for your services.</p>
+            </div>
+
+<a href="notifications.html" class="notification-icon">
+    🔔
+    <span class="notification-badge">2</span>
+</a>
+
+                <div class="profile-mini">
+                    <div class="profile-avatar">V</div>
+
+                    <div>
+                        <strong>Varsha</strong>
+                        <small>Customer</small>
+                    </div>
+                </div>
+            </div>
+
+        </header>
+
+
+        <!-- Search Section -->
+        <section class="dashboard-search">
+
+            <div class="search-content">
+                <h2>What service do you need?</h2>
+                <p>Find verified cooperative workers near you.</p>
+            </div>
+
+            <div class="search-box">
+
+                <input
+                    type="text"
+                    id="serviceSearch"
+                    placeholder="Search for plumber, electrician, cleaner..."
+                >
+
+                <button onclick="searchService()">
+                    🔍 Search
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- Quick Stats -->
+        <section class="stats-grid">
+
+            <div class="stat-card">
+                <div class="stat-icon">📅</div>
+
+                <div>
+                    <h3>2</h3>
+                    <p>Active Bookings</p>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">✅</div>
+
+                <div>
+                    <h3>5</h3>
+                    <p>Completed Services</p>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">💳</div>
+
+                <div>
+                    <h3>₹2,450</h3>
+                    <p>Total Spent</p>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">⭐</div>
+
+                <div>
+                    <h3>4.8</h3>
+                    <p>Average Rating</p>
+                </div>
+            </div>
+
+        </section>
+
+
+        <!-- Services -->
+        <section class="dashboard-section">
+
+            <div class="section-header">
+                <div>
+                    <h2>Popular Services</h2>
+                    <p>Choose a service to get started.</p>
+                </div>
+
+                <a href="services.html">View All →</a>
+            </div>
+
+
+            <div class="service-grid">
+
+                <div class="service-card" onclick="openService('Electrical')">
+                    <div class="service-card-icon">⚡</div>
+                    <h3>Electrical</h3>
+                    <p>Electricians</p>
+                </div>
+
+                <div class="service-card" onclick="openService('Plumbing')">
+                    <div class="service-card-icon">🔧</div>
+                    <h3>Plumbing</h3>
+                    <p>Plumbers</p>
+                </div>
+
+                <div class="service-card" onclick="openService('Carpentry')">
+                    <div class="service-card-icon">🪚</div>
+                    <h3>Carpentry</h3>
+                    <p>Carpenters</p>
+                </div>
+
+                <div class="service-card" onclick="openService('Cleaning')">
+                    <div class="service-card-icon">🧹</div>
+                    <h3>Cleaning</h3>
+                    <p>Cleaning workers</p>
+                </div>
+
+                <div class="service-card" onclick="openService('Painting')">
+                    <div class="service-card-icon">🎨</div>
+                    <h3>Painting</h3>
+                    <p>Professional painters</p>
+                </div>
+
+                <div class="service-card" onclick="openService('Gardening')">
+                    <div class="service-card-icon">🌱</div>
+                    <h3>Gardening</h3>
+                    <p>Garden workers</p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Active Booking + Fair Wage -->
+        <section class="dashboard-columns">
+
+            <!-- Active Booking -->
+            <div class="dashboard-card">
+
+                <div class="section-header">
+                    <div>
+                        <h2>Active Booking</h2>
+                        <p>Your current service request</p>
+                    </div>
+
+                    <span class="status-badge accepted">
+                        ACCEPTED
+                    </span>
+                </div>
+
+
+                <div class="booking-preview">
+
+                    <div class="worker-avatar">
+                        RK
+                    </div>
+
+                    <div class="booking-info">
+                        <h3>Raj Kumar</h3>
+                        <p>🔧 Plumbing Service</p>
+                        <p>📍 3.2 km away</p>
+                    </div>
+
+                </div>
+
+
+                <div class="booking-details">
+
+                    <div>
+                        <span>Date</span>
+                        <strong>06 Sep 2026</strong>
+                    </div>
+
+                    <div>
+                        <span>Time</span>
+                        <strong>10:30 AM</strong>
+                    </div>
+
+                    <div>
+                        <span>Fair Wage</span>
+                        <strong>₹550</strong>
+                    </div>
+
+                </div>
+
+
+                <button
+                    class="primary-btn full-width"
+                    onclick="viewBooking()"
+                >
+                    View Booking
+                </button>
+
+            </div>
+
+
+            <!-- Fair Wage -->
+            <div class="dashboard-card fair-wage-card">
+
+                <div class="fair-wage-icon">
+                    ⚖️
+                </div>
+
+                <h2>Fair Wage Guarantee</h2>
+
+                <p>
+                    Co-Op Connect ensures transparent and fair pricing
+                    for cooperative workers.
+                </p>
+
+
+                <div class="wage-breakdown">
+
+                    <div>
+                        <span>Base Wage</span>
+                        <strong>₹400</strong>
+                    </div>
+
+                    <div>
+                        <span>Skill Premium</span>
+                        <strong>₹100</strong>
+                    </div>
+
+                    <div>
+                        <span>Travel</span>
+                        <strong>₹50</strong>
+                    </div>
+
+                    <hr>
+
+                    <div class="total-wage">
+                        <span>Fair Wage</span>
+                        <strong>₹550</strong>
+                    </div>
+
+                </div>
+
+                <p class="wage-note">
+                    💡 No hidden charges. Customer and worker see the
+                    same transparent amount.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- Recent Bookings -->
+        <section class="dashboard-section">
+
+            <div class="section-header">
+
+                <div>
+                    <h2>Recent Bookings</h2>
+                    <p>Your latest service requests.</p>
+                </div>
+
+                <a href="bookings.html">
+                    View All →
+                </a>
+
+            </div>
+
+
+            <div class="table-container">
+
+                <table class="booking-table">
+
+                    <thead>
+                        <tr>
+                            <th>Service</th>
+                            <th>Worker</th>
+                            <th>Date</th>
+                            <th>Amount</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td>🔧 Plumbing</td>
+                            <td>Raj Kumar</td>
+                            <td>06 Sep 2026</td>
+                            <td>₹550</td>
+                            <td>
+                                <span class="status-badge accepted">
+                                    Accepted
+                                </span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>⚡ Electrical</td>
+                            <td>Arun Kumar</td>
+                            <td>28 Aug 2026</td>
+                            <td>₹700</td>
+                            <td>
+                                <span class="status-badge completed">
+                                    Completed
+                                </span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>🧹 Cleaning</td>
+                            <td>Meena</td>
+                            <td>20 Aug 2026</td>
+                            <td>₹450</td>
+                            <td>
+                                <span class="status-badge completed">
+                                    Completed
+                                </span>
+                            </td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script src="../js/app.js"></script>
+
+    <script>
+
+        function searchService() {
+
+            const search =
+                document.getElementById("serviceSearch").value.trim();
+
+            if (!search) {
+                alert("Please enter a service.");
+                return;
+            }
+
+            window.location.href =
+                "services.html?search=" +
+                encodeURIComponent(search);
+        }
+
+
+        function openService(service) {
+
+            window.location.href =
+                "services.html?service=" +
+                encodeURIComponent(service);
+        }
+
+
+        function viewBooking() {
+
+            window.location.href = "bookings.html";
+        }
+
+
+        function logout() {
+
+            localStorage.removeItem("token");
+            localStorage.removeItem("user");
+
+            window.location.href = "../login.html";
+        }
+
+    </script>
+
+</body>
+</html>

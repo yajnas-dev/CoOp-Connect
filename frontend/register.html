@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Register | Co-Op Connect</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <main class="auth-container">
+
+        <section class="auth-card">
+
+            <!-- Brand -->
+            <div class="auth-header">
+
+                <div class="brand-icon">
+                    🤝
+                </div>
+
+                <h1>Co-Op Connect</h1>
+
+                <p>
+                    Join the cooperative service community
+                </p>
+
+            </div>
+
+
+            <!-- Registration Form -->
+            <form id="registerForm">
+
+                <!-- Full Name -->
+                <div class="form-group">
+
+                    <label for="name">
+                        Full Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        placeholder="Enter your full name"
+                        autocomplete="name"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- Email -->
+                <div class="form-group">
+
+                    <label for="email">
+                        Email Address
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="Enter your email"
+                        autocomplete="email"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- Phone -->
+                <div class="form-group">
+
+                    <label for="phone">
+                        Phone Number
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="phone"
+                        name="phone"
+                        placeholder="Enter your phone number"
+                        autocomplete="tel"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- Register As -->
+                <div class="form-group">
+
+                    <label>
+                        Register As
+                    </label>
+
+                    <div class="role-options">
+
+                        <!-- Customer -->
+                        <label class="role-option selected">
+
+                            <input
+                                type="radio"
+                                name="role"
+                                value="CUSTOMER"
+                                checked
+                            >
+
+                            <span class="role-content">
+
+                                <span class="role-icon">
+                                    👤
+                                </span>
+
+                                <span>
+                                    <strong>Customer</strong>
+                                    <small>
+                                        Find and book services
+                                    </small>
+                                </span>
+
+                            </span>
+
+                        </label>
+
+
+                        <!-- Worker -->
+                        <label class="role-option">
+
+                            <input
+                                type="radio"
+                                name="role"
+                                value="WORKER"
+                            >
+
+                            <span class="role-content">
+
+                                <span class="role-icon">
+                                    👷
+                                </span>
+
+                                <span>
+                                    <strong>Worker</strong>
+                                    <small>
+                                        Offer your services
+                                    </small>
+                                </span>
+
+                            </span>
+
+                        </label>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Address -->
+                <div class="form-group">
+
+                    <label for="address">
+                        Address
+                    </label>
+
+                    <textarea
+                        id="address"
+                        name="address"
+                        rows="3"
+                        placeholder="Enter your address"
+                        required
+                    ></textarea>
+
+                </div>
+
+
+                <!-- City -->
+                <div class="form-group">
+
+                    <label for="city">
+                        City
+                    </label>
+
+                    <input
+                        type="text"
+                        id="city"
+                        name="city"
+                        placeholder="Enter your city"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- Password -->
+                <div class="form-group">
+
+                    <label for="password">
+                        Password
+                    </label>
+
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder="Create a password"
+                        autocomplete="new-password"
+                        minlength="6"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- Confirm Password -->
+                <div class="form-group">
+
+                    <label for="confirmPassword">
+                        Confirm Password
+                    </label>
+
+                    <input
+                        type="password"
+                        id="confirmPassword"
+                        name="confirmPassword"
+                        placeholder="Confirm your password"
+                        autocomplete="new-password"
+                        minlength="6"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- Submit -->
+                <button
+                    type="submit"
+                    class="primary-btn"
+                >
+                    Create Account
+                </button>
+
+            </form>
+
+
+            <!-- Message -->
+            <div
+                id="registerMessage"
+                class="form-message"
+                aria-live="polite"
+            ></div>
+
+
+            <!-- Login -->
+            <div class="auth-footer">
+
+                <p>
+                    Already have an account?
+                    <a href="login.html">Login</a>
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script src="js/app.js"></script>
+
+</body>
+
+</html>

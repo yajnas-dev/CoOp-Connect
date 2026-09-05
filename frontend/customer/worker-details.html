@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Worker Details | Co-Op Connect</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body class="dashboard-body">
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar">
+
+        <div class="sidebar-brand">
+            <span class="brand-icon">🤝</span>
+
+            <div>
+                <h2>Co-Op Connect</h2>
+                <small>Customer</small>
+            </div>
+        </div>
+
+
+        <nav class="sidebar-nav">
+
+            <a href="dashboard.html" class="nav-item">
+                🏠 <span>Dashboard</span>
+            </a>
+
+            <a href="services.html" class="nav-item">
+                🔧 <span>Find Services</span>
+            </a>
+
+            <a href="workers.html" class="nav-item active">
+                👷 <span>Find Workers</span>
+            </a>
+
+            <a href="bookings.html" class="nav-item">
+                📅 <span>My Bookings</span>
+            </a>
+
+            <a href="payments.html" class="nav-item">
+                💳 <span>Payments</span>
+            </a>
+
+            <a href="reviews.html" class="nav-item">
+                ⭐ <span>My Reviews</span>
+            </a>
+
+            <a href="complaints.html" class="nav-item">
+                ⚠️ <span>Complaints</span>
+            </a>
+
+            <a href="profile.html" class="nav-item">
+                👤 <span>My Profile</span>
+            </a>
+
+        </nav>
+
+
+        <button class="logout-btn" onclick="logout()">
+            🚪 Logout
+        </button>
+
+    </aside>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="dashboard-main">
+
+        <!-- Back -->
+
+        <div class="back-link">
+            <a href="workers.html">← Back to Workers</a>
+        </div>
+
+
+        <!-- ================= WORKER PROFILE ================= -->
+
+        <section class="worker-profile-card">
+
+            <div class="worker-profile-header">
+
+                <div class="large-worker-photo">
+                    RK
+                </div>
+
+
+                <div class="worker-profile-main">
+
+                    <div class="profile-title-row">
+
+                        <h1 id="workerName">
+                            Raj Kumar
+                        </h1>
+
+                        <span class="verified-badge">
+                            ✓ Verified Worker
+                        </span>
+
+                    </div>
+
+
+                    <p class="worker-profile-role">
+                        🔧 Plumbing Specialist
+                    </p>
+
+
+                    <div class="profile-rating">
+
+                        ⭐ <strong>4.9</strong>
+
+                        <span>
+                            124 customer reviews
+                        </span>
+
+                    </div>
+
+
+                    <div class="profile-location">
+                        📍 2.4 km away from your location
+                    </div>
+
+                </div>
+
+
+                <div class="availability-box">
+
+                    <span class="available-dot">
+                        ●
+                    </span>
+
+                    Available Now
+
+                </div>
+
+            </div>
+
+
+            <!-- Profile Stats -->
+
+            <div class="profile-stats">
+
+                <div>
+                    <strong>8+</strong>
+                    <span>Years Experience</span>
+                </div>
+
+                <div>
+                    <strong>124</strong>
+                    <span>Services Completed</span>
+                </div>
+
+                <div>
+                    <strong>98%</strong>
+                    <span>Completion Rate</span>
+                </div>
+
+                <div>
+                    <strong>₹550</strong>
+                    <span>Starting Fair Wage</span>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= CONTENT GRID ================= -->
+
+        <section class="profile-content-grid">
+
+
+            <!-- LEFT -->
+
+            <div>
+
+
+                <!-- About -->
+
+                <div class="dashboard-card profile-section">
+
+                    <h2>About the Worker</h2>
+
+                    <p>
+                        Raj Kumar is an experienced cooperative plumber
+                        with more than 8 years of experience in residential
+                        and community plumbing services.
+                    </p>
+
+                    <p>
+                        He specializes in pipe repair, water systems,
+                        leakage repair and installation work.
+                    </p>
+
+                </div>
+
+
+                <!-- Skills -->
+
+                <div class="dashboard-card profile-section">
+
+                    <h2>Skills & Services</h2>
+
+                    <div class="profile-skills">
+
+                        <span>Pipe Repair</span>
+                        <span>Water Systems</span>
+                        <span>Leakage Repair</span>
+                        <span>Tap Installation</span>
+                        <span>Bathroom Plumbing</span>
+                        <span>Water Tank</span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Verification -->
+
+                <div class="dashboard-card profile-section">
+
+                    <h2>Verification</h2>
+
+                    <div class="verification-list">
+
+                        <div>
+                            <span>✓</span>
+                            Identity Verified
+                        </div>
+
+                        <div>
+                            <span>✓</span>
+                            Skill Certificate Verified
+                        </div>
+
+                        <div>
+                            <span>✓</span>
+                            Cooperative Membership Verified
+                        </div>
+
+                        <div>
+                            <span>✓</span>
+                            Profile Approved by Admin
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Reviews -->
+
+                <div class="dashboard-card profile-section">
+
+                    <div class="section-header">
+
+                        <div>
+                            <h2>Customer Reviews</h2>
+
+                            <p>
+                                Recent feedback from customers
+                            </p>
+                        </div>
+
+                        <span class="review-summary">
+                            ⭐ 4.9 / 5
+                        </span>
+
+                    </div>
+
+
+                    <div class="review-item">
+
+                        <div class="review-avatar">
+                            A
+                        </div>
+
+                        <div>
+
+                            <strong>Arun</strong>
+
+                            <div>
+                                ⭐⭐⭐⭐⭐
+                            </div>
+
+                            <p>
+                                Very professional and completed
+                                the plumbing work on time.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="review-item">
+
+                        <div class="review-avatar">
+                            M
+                        </div>
+
+                        <div>
+
+                            <strong>Meena</strong>
+
+                            <div>
+                                ⭐⭐⭐⭐⭐
+                            </div>
+
+                            <p>
+                                Good quality work and transparent pricing.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- RIGHT -->
+
+            <div>
+
+
+                <!-- Book Worker -->
+
+                <div class="dashboard-card booking-action-card">
+
+                    <h2>Need this service?</h2>
+
+                    <p>
+                        Book this verified cooperative worker
+                        for your service.
+                    </p>
+
+
+                    <div class="starting-price">
+
+                        <span>Starting Fair Wage</span>
+
+                        <strong>₹550</strong>
+
+                    </div>
+
+
+                    <button
+                        class="primary-btn full-width"
+                        onclick="bookWorker()"
+                    >
+                        Book This Worker
+                    </button>
+
+
+                    <button
+                        class="secondary-btn full-width back-button"
+                        onclick="window.location.href='workers.html'"
+                    >
+                        Choose Another Worker
+                    </button>
+
+                </div>
+
+
+                <!-- Fair Wage -->
+
+                <div class="dashboard-card profile-section">
+
+                    <h2>Fair Wage Estimate</h2>
+
+                    <p class="small-text">
+                        Transparent pricing based on cooperative
+                        wage rules.
+                    </p>
+
+
+                    <div class="mini-wage-breakdown">
+
+                        <div>
+                            <span>Base Wage</span>
+                            <strong>₹400</strong>
+                        </div>
+
+                        <div>
+                            <span>Skill Premium</span>
+                            <strong>₹100</strong>
+                        </div>
+
+                        <div>
+                            <span>Travel</span>
+                            <strong>₹50</strong>
+                        </div>
+
+                        <hr>
+
+                        <div class="mini-total">
+                            <span>Estimated Fair Wage</span>
+                            <strong>₹550</strong>
+                        </div>
+
+                    </div>
+
+                    <div class="transparent-note">
+                        ⚖️ No hidden charges
+                    </div>
+
+                </div>
+
+
+                <!-- Service Area -->
+
+                <div class="dashboard-card profile-section">
+
+                    <h2>Service Area</h2>
+
+                    <p>
+                        📍 Tirunelveli
+                    </p>
+
+                    <p>
+                        📍 Tisaiyanvilai
+                    </p>
+
+                    <p>
+                        📍 Nearby communities
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script src="../js/app.js"></script>
+
+
+    <script>
+
+        /* =========================
+           GET WORKER FROM URL
+        ========================= */
+
+        const params =
+            new URLSearchParams(window.location.search);
+
+        const worker =
+            params.get("worker");
+
+
+        if (worker) {
+
+            document.getElementById("workerName")
+                .textContent = worker;
+
+        }
+
+
+        /* =========================
+           BOOK WORKER
+        ========================= */
+
+        function bookWorker() {
+
+            const selectedWorker =
+                worker || "Raj Kumar";
+
+            window.location.href =
+                "booking.html?worker=" +
+                encodeURIComponent(selectedWorker);
+
+        }
+
+
+        /* =========================
+           LOGOUT
+        ========================= */
+
+        function logout() {
+
+            localStorage.removeItem("token");
+            localStorage.removeItem("user");
+
+            window.location.href =
+                "../login.html";
+
+        }
+
+    </script>
+
+</body>
+</html>

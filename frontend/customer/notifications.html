@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Notifications - Co-Op Connect</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body class="dashboard-body">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+
+        <div class="sidebar-brand">
+
+            <div class="brand-icon">🤝</div>
+
+            <div>
+                <h2>Co-Op Connect</h2>
+                <span>Customer Portal</span>
+            </div>
+
+        </div>
+
+
+        <nav class="sidebar-nav">
+
+            <a href="dashboard.html" class="nav-item">
+                <span>🏠</span> Dashboard
+            </a>
+
+            <a href="services.html" class="nav-item">
+                <span>🔍</span> Find Services
+            </a>
+
+            <a href="workers.html" class="nav-item">
+                <span>👷</span> Find Workers
+            </a>
+
+            <a href="bookings.html" class="nav-item">
+                <span>📅</span> My Bookings
+            </a>
+
+            <a href="payments.html" class="nav-item">
+                <span>💳</span> Payments
+            </a>
+
+            <a href="reviews.html" class="nav-item">
+                <span>⭐</span> My Reviews
+            </a>
+
+            <a href="complaints.html" class="nav-item">
+                <span>⚠️</span> Complaints
+            </a>
+
+            <a href="profile.html" class="nav-item">
+                <span>👤</span> My Profile
+            </a>
+
+            <button class="nav-item logout-btn" onclick="logout()">
+                <span>🚪</span> Logout
+            </button>
+
+        </nav>
+
+    </aside>
+
+
+    <!-- Main Content -->
+    <main class="dashboard-main">
+
+        <!-- Header -->
+        <header class="dashboard-header">
+
+            <div>
+                <h1>Notifications</h1>
+
+                <p>
+                    Stay updated about your bookings and services.
+                </p>
+            </div>
+
+
+            <div class="header-profile">
+
+                <div class="notification-icon">
+
+                    🔔
+
+                    <span
+                        class="notification-badge"
+                        id="notificationCount">
+                        3
+                    </span>
+
+                </div>
+
+
+                <div class="profile-mini">
+
+                    <div class="profile-avatar">
+                        V
+                    </div>
+
+                    <div>
+                        <strong>Varsha</strong>
+                        <span>Customer</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- Notification Actions -->
+        <section class="notification-toolbar">
+
+            <div>
+
+                <h2>Recent Notifications</h2>
+
+                <p>
+                    Important updates related to your services.
+                </p>
+
+            </div>
+
+
+            <button
+                class="secondary-btn"
+                onclick="markAllRead()">
+
+                ✓ Mark All as Read
+
+            </button>
+
+        </section>
+
+
+        <!-- Notifications -->
+        <section class="notification-list"
+                 id="notificationList">
+
+            <!-- Notification 1 -->
+            <div class="notification-card unread">
+
+                <div class="notification-card-icon booking-icon">
+                    📅
+                </div>
+
+                <div class="notification-content">
+
+                    <div class="notification-title-row">
+
+                        <h3>Booking Confirmed</h3>
+
+                        <span class="notification-time">
+                            10 min ago
+                        </span>
+
+                    </div>
+
+                    <p>
+                        Your plumbing service booking with
+                        Raj Kumar has been created successfully.
+                    </p>
+
+                    <a href="bookings.html"
+                       class="notification-link">
+
+                        View Booking →
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- Notification 2 -->
+            <div class="notification-card unread">
+
+                <div class="notification-card-icon success-icon">
+                    ✓
+                </div>
+
+                <div class="notification-content">
+
+                    <div class="notification-title-row">
+
+                        <h3>Worker Accepted Your Request</h3>
+
+                        <span class="notification-time">
+                            1 hour ago
+                        </span>
+
+                    </div>
+
+                    <p>
+                        Raj Kumar accepted your plumbing service
+                        request. The service is scheduled for tomorrow.
+                    </p>
+
+                    <a href="booking-details.html"
+                       class="notification-link">
+
+                        View Details →
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- Notification 3 -->
+            <div class="notification-card unread">
+
+                <div class="notification-card-icon payment-icon">
+                    💳
+                </div>
+
+                <div class="notification-content">
+
+                    <div class="notification-title-row">
+
+                        <h3>Payment Available</h3>
+
+                        <span class="notification-time">
+                            Yesterday
+                        </span>
+
+                    </div>
+
+                    <p>
+                        Payment of ₹650 is available for your
+                        completed plumbing service.
+                    </p>
+
+                    <a href="payments.html"
+                       class="notification-link">
+
+                        Make Payment →
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- Notification 4 -->
+            <div class="notification-card">
+
+                <div class="notification-card-icon info-icon">
+                    ⚖️
+                </div>
+
+                <div class="notification-content">
+
+                    <div class="notification-title-row">
+
+                        <h3>Fair Wage Guarantee</h3>
+
+                        <span class="notification-time">
+                            2 days ago
+                        </span>
+
+                    </div>
+
+                    <p>
+                        Your booking price includes the transparent
+                        Fair Wage calculation before confirmation.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- Notification 5 -->
+            <div class="notification-card">
+
+                <div class="notification-card-icon review-icon">
+                    ⭐
+                </div>
+
+                <div class="notification-content">
+
+                    <div class="notification-title-row">
+
+                        <h3>Share Your Experience</h3>
+
+                        <span class="notification-time">
+                            3 days ago
+                        </span>
+
+                    </div>
+
+                    <p>
+                        Your recent service is complete.
+                        Please rate the worker and share your feedback.
+                    </p>
+
+                    <a href="reviews.html"
+                       class="notification-link">
+
+                        Rate Worker →
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Empty State -->
+        <div
+            id="emptyNotifications"
+            class="empty-notifications"
+            style="display:none;">
+
+            <div class="empty-notification-icon">
+                🔔
+            </div>
+
+            <h3>No Notifications</h3>
+
+            <p>
+                You're all caught up! New updates will appear here.
+            </p>
+
+        </div>
+
+    </main>
+
+
+<script>
+
+function markAllRead() {
+
+    const notifications =
+        document.querySelectorAll(".notification-card");
+
+    notifications.forEach(notification => {
+
+        notification.classList.remove("unread");
+
+    });
+
+
+    document.getElementById("notificationCount").textContent = "0";
+
+}
+
+
+function logout() {
+
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+
+    window.location.href =
+        "../login.html";
+
+}
+
+</script>
+
+</body>
+</html>

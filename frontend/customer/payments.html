@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payments - Co-Op Connect</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body class="dashboard-body">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+
+        <div class="sidebar-brand">
+            <div class="brand-icon">🤝</div>
+            <div>
+                <h2>Co-Op Connect</h2>
+                <span>Customer Portal</span>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+
+            <a href="dashboard.html" class="nav-item">
+                <span>🏠</span> Dashboard
+            </a>
+
+            <a href="services.html" class="nav-item">
+                <span>🔍</span> Find Services
+            </a>
+
+            <a href="workers.html" class="nav-item">
+                <span>👷</span> Find Workers
+            </a>
+
+            <a href="bookings.html" class="nav-item">
+                <span>📅</span> My Bookings
+            </a>
+
+            <a href="payments.html" class="nav-item active">
+                <span>💳</span> Payments
+            </a>
+
+            <a href="reviews.html" class="nav-item">
+                <span>⭐</span> My Reviews
+            </a>
+
+            <a href="complaints.html" class="nav-item">
+                <span>⚠️</span> Complaints
+            </a>
+
+            <a href="profile.html" class="nav-item">
+                <span>👤</span> My Profile
+            </a>
+
+            <button class="nav-item logout-btn" onclick="logout()">
+                <span>🚪</span> Logout
+            </button>
+
+        </nav>
+    </aside>
+
+
+    <!-- Main Content -->
+    <main class="dashboard-main">
+
+        <header class="dashboard-header">
+
+            <div>
+                <h1>Payments</h1>
+                <p>View your service payments and transaction history.</p>
+            </div>
+
+            <div class="header-profile">
+
+                <div class="notification-icon">
+                    🔔
+                    <span class="notification-badge">2</span>
+                </div>
+
+                <div class="profile-mini">
+                    <div class="profile-avatar">V</div>
+
+                    <div>
+                        <strong>Varsha</strong>
+                        <span>Customer</span>
+                    </div>
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- Payment Summary -->
+        <section class="stats-grid payment-stats">
+
+            <div class="stat-card">
+                <div class="stat-icon">💰</div>
+                <div>
+                    <span>Total Spent</span>
+                    <h2 id="totalSpent">₹0</h2>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">✅</div>
+                <div>
+                    <span>Paid Services</span>
+                    <h2 id="paidServices">0</h2>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">⏳</div>
+                <div>
+                    <span>Pending Payments</span>
+                    <h2 id="pendingPayments">0</h2>
+                </div>
+            </div>
+
+        </section>
+
+
+        <!-- Fair Wage Information -->
+        <section class="dashboard-card payment-info-card">
+
+            <div class="payment-info-icon">⚖️</div>
+
+            <div>
+                <h3>Transparent Fair Wage Payments</h3>
+
+                <p>
+                    Co-Op Connect shows a transparent wage calculation before
+                    you confirm a booking. You always know how the final amount
+                    is calculated.
+                </p>
+
+                <div class="mini-payment-points">
+                    <span>✓ Base Wage</span>
+                    <span>✓ Skill Premium</span>
+                    <span>✓ Travel Charge</span>
+                    <span>✓ Service Complexity</span>
+                </div>
+            </div>
+
+        </section>
+
+
+        <!-- Payment History -->
+        <section class="dashboard-section">
+
+            <div class="section-header">
+                <div>
+                    <h2>Payment History</h2>
+                    <p>Your completed and pending service payments</p>
+                </div>
+            </div>
+
+            <div class="table-container">
+
+                <table class="booking-table">
+
+                    <thead>
+                        <tr>
+                            <th>Booking ID</th>
+                            <th>Service</th>
+                            <th>Worker</th>
+                            <th>Amount</th>
+                            <th>Status</th>
+                            <th>Date</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="paymentTableBody"></tbody>
+
+                </table>
+
+            </div>
+
+            <div id="emptyPayments" class="empty-bookings" style="display:none;">
+                <div>💳</div>
+                <h3>No Payments Yet</h3>
+                <p>Your payment history will appear here after booking services.</p>
+
+                <a href="services.html" class="primary-btn">
+                    Find a Service
+                </a>
+            </div>
+
+        </section>
+
+    </main>
+
+
+<script>
+
+function loadPayments() {
+
+    const bookings =
+        JSON.parse(localStorage.getItem("coopBookings")) || [];
+
+    const tableBody =
+        document.getElementById("paymentTableBody");
+
+    const emptyState =
+        document.getElementById("emptyPayments");
+
+    const totalSpent =
+        document.getElementById("totalSpent");
+
+    const paidServices =
+        document.getElementById("paidServices");
+
+    const pendingPayments =
+        document.getElementById("pendingPayments");
+
+
+    tableBody.innerHTML = "";
+
+    let total = 0;
+    let paid = 0;
+    let pending = 0;
+
+
+    if (bookings.length === 0) {
+
+        document.querySelector(".table-container").style.display = "none";
+        emptyState.style.display = "block";
+
+        totalSpent.textContent = "₹0";
+        paidServices.textContent = "0";
+        pendingPayments.textContent = "0";
+
+        return;
+    }
+
+
+    document.querySelector(".table-container").style.display = "block";
+    emptyState.style.display = "none";
+
+
+    bookings.forEach(booking => {
+
+        const amount = Number(booking.fairWage) || 0;
+
+        let paymentStatus =
+            booking.paymentStatus || "PENDING";
+
+
+        if (paymentStatus === "PAID") {
+
+            total += amount;
+            paid++;
+
+        } else {
+
+            pending++;
+
+        }
+
+
+        const row = document.createElement("tr");
+
+        row.innerHTML = `
+
+            <td>
+                <strong>${booking.id}</strong>
+            </td>
+
+            <td>
+                ${booking.service}
+            </td>
+
+            <td>
+                ${booking.worker}
+            </td>
+
+            <td>
+                <strong>₹${amount}</strong>
+            </td>
+
+            <td>
+
+                <span class="payment-status
+                    ${paymentStatus.toLowerCase()}">
+
+                    ${paymentStatus}
+
+                </span>
+
+            </td>
+
+            <td>
+                ${booking.date || "-"}
+            </td>
+
+            <td>
+
+                <button
+                    class="secondary-btn small-action-btn"
+                    onclick="viewPayment('${booking.id}')">
+
+                    View
+
+                </button>
+
+            </td>
+
+        `;
+
+        tableBody.appendChild(row);
+
+    });
+
+
+    totalSpent.textContent = "₹" + total;
+    paidServices.textContent = paid;
+    pendingPayments.textContent = pending;
+}
+
+
+function viewPayment(bookingId) {
+
+    localStorage.setItem(
+        "selectedBookingId",
+        bookingId
+    );
+
+    window.location.href =
+        "booking-details.html";
+
+}
+
+
+function logout() {
+
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+
+    window.location.href =
+        "../login.html";
+}
+
+
+loadPayments();
+
+</script>
+
+</body>
+</html>

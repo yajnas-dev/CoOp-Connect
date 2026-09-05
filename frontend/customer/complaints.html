@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Complaints - Co-Op Connect</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body class="dashboard-body">
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar">
+
+        <div class="sidebar-brand">
+
+            <div class="brand-icon">🤝</div>
+
+            <div>
+                <h2>Co-Op Connect</h2>
+                <span>Customer Portal</span>
+            </div>
+
+        </div>
+
+
+        <nav class="sidebar-nav">
+
+            <a href="dashboard.html" class="nav-item">
+                <span>🏠</span>
+                Dashboard
+            </a>
+
+            <a href="services.html" class="nav-item">
+                <span>🔧</span>
+                Find Services
+            </a>
+
+            <a href="workers.html" class="nav-item">
+                <span>👷</span>
+                Find Workers
+            </a>
+
+            <a href="bookings.html" class="nav-item">
+                <span>📋</span>
+                My Bookings
+            </a>
+
+            <a href="#" class="nav-item">
+                <span>💳</span>
+                Payments
+            </a>
+
+            <a href="reviews.html" class="nav-item">
+                <span>⭐</span>
+                My Reviews
+            </a>
+
+            <a href="complaints.html" class="nav-item active">
+                <span>⚠️</span>
+                Complaints
+            </a>
+
+            <a href="#" class="nav-item">
+                <span>👤</span>
+                My Profile
+            </a>
+
+        </nav>
+
+
+        <button
+            class="nav-item logout-btn"
+            onclick="logout()"
+        >
+            <span>🚪</span>
+            Logout
+        </button>
+
+    </aside>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="dashboard-main">
+
+        <!-- Header -->
+
+        <header class="dashboard-header">
+
+            <div>
+
+                <h1>Complaints & Support</h1>
+
+                <p>
+                    Report an issue and get help from the cooperative.
+                </p>
+
+            </div>
+
+
+            <div class="header-profile">
+
+                <div class="notification-icon">
+
+                    🔔
+
+                    <span class="notification-badge">
+                        2
+                    </span>
+
+                </div>
+
+
+                <div class="profile-mini">
+
+                    <div class="profile-avatar">
+                        V
+                    </div>
+
+                    <div>
+
+                        <strong>Varsha</strong>
+
+                        <small>Customer</small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- ================= TWO COLUMNS ================= -->
+
+        <div class="complaint-page-grid">
+
+
+            <!-- ================= COMPLAINT FORM ================= -->
+
+            <section class="dashboard-card">
+
+                <div class="section-header">
+
+                    <div>
+
+                        <h2>Submit a Complaint</h2>
+
+                        <p>
+                            Tell us what happened and our cooperative
+                            administration will review it.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <form id="complaintForm">
+
+
+                    <!-- Booking -->
+
+                    <div class="form-group">
+
+                        <label for="complaintBooking">
+                            Related Booking
+                        </label>
+
+                        <select
+                            id="complaintBooking"
+                            required
+                        >
+
+                            <option value="">
+                                Select Booking
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- Category -->
+
+                    <div class="form-group">
+
+                        <label for="complaintCategory">
+                            Complaint Category
+                        </label>
+
+                        <select
+                            id="complaintCategory"
+                            required
+                        >
+
+                            <option value="">
+                                Select Category
+                            </option>
+
+                            <option value="Worker did not arrive">
+                                Worker did not arrive
+                            </option>
+
+                            <option value="Poor service quality">
+                                Poor service quality
+                            </option>
+
+                            <option value="Overcharging">
+                                Overcharging
+                            </option>
+
+                            <option value="Worker behaviour">
+                                Worker behaviour
+                            </option>
+
+                            <option value="Service delay">
+                                Service delay
+                            </option>
+
+                            <option value="Other">
+                                Other
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- Subject -->
+
+                    <div class="form-group">
+
+                        <label for="complaintSubject">
+                            Subject
+                        </label>
+
+                        <input
+                            type="text"
+                            id="complaintSubject"
+                            placeholder="Briefly describe the issue"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- Description -->
+
+                    <div class="form-group">
+
+                        <label for="complaintDescription">
+                            Description
+                        </label>
+
+                        <textarea
+                            id="complaintDescription"
+                            rows="6"
+                            placeholder="Explain the issue in detail..."
+                            required
+                        ></textarea>
+
+                    </div>
+
+
+                    <!-- Priority -->
+
+                    <div class="form-group">
+
+                        <label for="complaintPriority">
+                            Priority
+                        </label>
+
+                        <select id="complaintPriority">
+
+                            <option value="LOW">
+                                Low
+                            </option>
+
+                            <option value="MEDIUM" selected>
+                                Medium
+                            </option>
+
+                            <option value="HIGH">
+                                High
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div id="complaintMessage"></div>
+
+
+                    <button
+                        type="submit"
+                        class="primary-btn"
+                    >
+                        Submit Complaint
+                    </button>
+
+                </form>
+
+            </section>
+
+
+            <!-- ================= SUPPORT CARD ================= -->
+
+            <aside>
+
+
+                <div class="dashboard-card complaint-support-card">
+
+                    <div class="complaint-support-icon">
+                        🛡️
+                    </div>
+
+                    <h2>
+                        Cooperative Support
+                    </h2>
+
+                    <p>
+                        Your complaint will be reviewed by the
+                        cooperative administration.
+                    </p>
+
+
+                    <div class="support-point">
+
+                        <span>✓</span>
+
+                        <div>
+                            <strong>Verified Workers</strong>
+
+                            <small>
+                                Worker identity and skills are verified.
+                            </small>
+                        </div>
+
+                    </div>
+
+
+                    <div class="support-point">
+
+                        <span>✓</span>
+
+                        <div>
+                            <strong>Fair Wage Protection</strong>
+
+                            <small>
+                                Transparent wage calculation protects
+                                both customers and workers.
+                            </small>
+                        </div>
+
+                    </div>
+
+
+                    <div class="support-point">
+
+                        <span>✓</span>
+
+                        <div>
+                            <strong>Admin Resolution</strong>
+
+                            <small>
+                                Complaints are monitored by the cooperative.
+                            </small>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="booking-info-box">
+
+                    <strong>
+                        💡 Before submitting
+                    </strong>
+
+                    <p>
+                        Please provide accurate information so the
+                        cooperative can resolve your complaint quickly.
+                    </p>
+
+                </div>
+
+            </aside>
+
+        </div>
+
+
+        <!-- ================= MY COMPLAINTS ================= -->
+
+        <section class="dashboard-section">
+
+            <div class="section-header">
+
+                <div>
+
+                    <h2>
+                        My Complaints
+                    </h2>
+
+                    <p>
+                        Track complaints you have submitted.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div id="complaintsContainer">
+
+                <!-- Complaints generated here -->
+
+            </div>
+
+
+            <div
+                id="emptyComplaints"
+                class="empty-bookings"
+            >
+
+                <div class="empty-icon">
+                    🛡️
+                </div>
+
+                <h3>
+                    No Complaints
+                </h3>
+
+                <p>
+                    You haven't submitted any complaints.
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+<script>
+
+    /* ========================================
+       LOAD BOOKINGS
+    ======================================== */
+
+    const bookings =
+        JSON.parse(
+            localStorage.getItem("coopBookings")
+        ) || [];
+
+
+    const bookingSelect =
+        document.getElementById(
+            "complaintBooking"
+        );
+
+
+    /*
+       Only completed / existing bookings
+       are useful for complaint selection.
+    */
+
+    bookings.forEach(booking => {
+
+        const option =
+            document.createElement("option");
+
+        option.value =
+            booking.id;
+
+        option.textContent =
+            `${booking.id} — ${booking.service} — ${booking.worker}`;
+
+        bookingSelect.appendChild(option);
+
+    });
+
+
+    /* ========================================
+       SUBMIT COMPLAINT
+    ======================================== */
+
+    document
+        .getElementById("complaintForm")
+        .addEventListener(
+            "submit",
+            function(event) {
+
+                event.preventDefault();
+
+
+                const bookingId =
+                    document.getElementById(
+                        "complaintBooking"
+                    ).value;
+
+
+                const category =
+                    document.getElementById(
+                        "complaintCategory"
+                    ).value;
+
+
+                const subject =
+                    document.getElementById(
+                        "complaintSubject"
+                    ).value.trim();
+
+
+                const description =
+                    document.getElementById(
+                        "complaintDescription"
+                    ).value.trim();
+
+
+                const priority =
+                    document.getElementById(
+                        "complaintPriority"
+                    ).value;
+
+
+                const complaint = {
+
+                    id: "CMP" + Date.now(),
+
+                    bookingId: bookingId,
+
+                    category: category,
+
+                    subject: subject,
+
+                    description: description,
+
+                    priority: priority,
+
+                    status: "OPEN",
+
+                    createdAt:
+                        new Date().toISOString()
+
+                };
+
+
+                const complaints =
+                    JSON.parse(
+                        localStorage.getItem(
+                            "coopComplaints"
+                        )
+                    ) || [];
+
+
+                complaints.push(complaint);
+
+
+                localStorage.setItem(
+                    "coopComplaints",
+                    JSON.stringify(complaints)
+                );
+
+
+                document.getElementById(
+                    "complaintMessage"
+                ).innerHTML = `
+
+                    <div class="form-message success">
+
+                        ✓ Complaint submitted successfully!
+
+                        <br>
+
+                        Complaint ID:
+                        <strong>
+                            ${complaint.id}
+                        </strong>
+
+                    </div>
+
+                `;
+
+
+                document
+                    .getElementById("complaintForm")
+                    .reset();
+
+
+                displayComplaints();
+
+            }
+        );
+
+
+    /* ========================================
+       DISPLAY COMPLAINTS
+    ======================================== */
+
+    function displayComplaints() {
+
+        const container =
+            document.getElementById(
+                "complaintsContainer"
+            );
+
+
+        const empty =
+            document.getElementById(
+                "emptyComplaints"
+            );
+
+
+        const complaints =
+            JSON.parse(
+                localStorage.getItem(
+                    "coopComplaints"
+                )
+            ) || [];
+
+
+        container.innerHTML = "";
+
+
+        if (complaints.length === 0) {
+
+            empty.style.display = "block";
+
+            return;
+
+        }
+
+
+        empty.style.display = "none";
+
+
+        complaints
+            .slice()
+            .reverse()
+            .forEach(complaint => {
+
+                const card =
+                    document.createElement("div");
+
+
+                card.className =
+                    "complaint-card";
+
+
+                card.innerHTML = `
+
+                    <div class="complaint-card-header">
+
+                        <div>
+
+                            <span class="complaint-id">
+                                ${complaint.id}
+                            </span>
+
+                            <h3>
+                                ${complaint.subject}
+                            </h3>
+
+                        </div>
+
+
+                        <span class="
+                            status-badge
+                            ${getComplaintStatusClass(
+                                complaint.status
+                            )}
+                        ">
+                            ${formatStatus(
+                                complaint.status
+                            )}
+                        </span>
+
+                    </div>
+
+
+                    <div class="complaint-card-info">
+
+                        <div>
+
+                            <small>
+                                Category
+                            </small>
+
+                            <strong>
+                                ${complaint.category}
+                            </strong>
+
+                        </div>
+
+
+                        <div>
+
+                            <small>
+                                Priority
+                            </small>
+
+                            <strong>
+                                ${complaint.priority}
+                            </strong>
+
+                        </div>
+
+
+                        <div>
+
+                            <small>
+                                Booking
+                            </small>
+
+                            <strong>
+                                ${complaint.bookingId}
+                            </strong>
+
+                        </div>
+
+
+                        <div>
+
+                            <small>
+                                Submitted
+                            </small>
+
+                            <strong>
+                                ${formatDate(
+                                    complaint.createdAt
+                                )}
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="complaint-description">
+
+                        ${complaint.description}
+
+                    </div>
+
+                `;
+
+
+                container.appendChild(card);
+
+            });
+
+    }
+
+
+    /* ========================================
+       STATUS CLASS
+    ======================================== */
+
+    function getComplaintStatusClass(status) {
+
+        return status
+            .toLowerCase()
+            .replace("_", "-");
+
+    }
+
+
+    /* ========================================
+       FORMAT STATUS
+    ======================================== */
+
+    function formatStatus(status) {
+
+        return status
+            .replace("_", " ")
+            .replace(/\b\w/g, letter =>
+                letter.toUpperCase()
+            );
+
+    }
+
+
+    /* ========================================
+       FORMAT DATE
+    ======================================== */
+
+    function formatDate(date) {
+
+        return new Date(date)
+            .toLocaleDateString(
+                "en-IN",
+                {
+                    day: "numeric",
+                    month: "short",
+                    year: "numeric"
+                }
+            );
+
+    }
+
+
+    /* ========================================
+       LOGOUT
+    ======================================== */
+
+    function logout() {
+
+        localStorage.removeItem("token");
+
+        localStorage.removeItem("user");
+
+        window.location.href =
+            "../login.html";
+
+    }
+
+
+    /* ========================================
+       INITIAL LOAD
+    ======================================== */
+
+    displayComplaints();
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Bookings - Co-Op Connect</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body class="dashboard-body">
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar">
+
+        <div class="sidebar-brand">
+
+            <div class="brand-icon">🤝</div>
+
+            <div>
+                <h2>Co-Op Connect</h2>
+                <span>Customer Portal</span>
+            </div>
+
+        </div>
+
+
+        <nav class="sidebar-nav">
+
+            <a href="dashboard.html" class="nav-item">
+                <span>🏠</span>
+                Dashboard
+            </a>
+
+            <a href="services.html" class="nav-item">
+                <span>🔧</span>
+                Find Services
+            </a>
+
+            <a href="workers.html" class="nav-item">
+                <span>👷</span>
+                Find Workers
+            </a>
+
+            <a href="bookings.html" class="nav-item active">
+                <span>📋</span>
+                My Bookings
+            </a>
+
+            <a href="#" class="nav-item">
+                <span>💳</span>
+                Payments
+            </a>
+
+            <a href="#" class="nav-item">
+                <span>⭐</span>
+                My Reviews
+            </a>
+
+            <a href="#" class="nav-item">
+                <span>⚠️</span>
+                Complaints
+            </a>
+
+            <a href="#" class="nav-item">
+                <span>👤</span>
+                My Profile
+            </a>
+
+        </nav>
+
+
+        <button class="nav-item logout-btn" onclick="logout()">
+            <span>🚪</span>
+            Logout
+        </button>
+
+    </aside>
+
+
+    <!-- ================= MAIN CONTENT ================= -->
+
+    <main class="dashboard-main">
+
+
+        <!-- Header -->
+
+        <header class="dashboard-header">
+
+            <div>
+
+                <h1>My Bookings</h1>
+
+                <p>
+                    Manage and track your service bookings.
+                </p>
+
+            </div>
+
+
+            <div class="header-profile">
+
+                <div class="notification-icon">
+
+                    🔔
+
+                    <span class="notification-badge">
+                        2
+                    </span>
+
+                </div>
+
+
+                <div class="profile-mini">
+
+                    <div class="profile-avatar">
+                        V
+                    </div>
+
+                    <div>
+
+                        <strong>Varsha</strong>
+
+                        <small>
+                            Customer
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- ================= BOOKING FILTERS ================= -->
+
+        <section class="booking-filter-section">
+
+            <div class="booking-filter">
+
+                <button
+                    class="booking-filter-btn active"
+                    onclick="filterBookings('ALL', this)"
+                >
+                    All
+                </button>
+
+
+                <button
+                    class="booking-filter-btn"
+                    onclick="filterBookings('PENDING', this)"
+                >
+                    Pending
+                </button>
+
+
+                <button
+                    class="booking-filter-btn"
+                    onclick="filterBookings('ACCEPTED', this)"
+                >
+                    Accepted
+                </button>
+
+
+                <button
+                    class="booking-filter-btn"
+                    onclick="filterBookings('IN_PROGRESS', this)"
+                >
+                    In Progress
+                </button>
+
+
+                <button
+                    class="booking-filter-btn"
+                    onclick="filterBookings('COMPLETED', this)"
+                >
+                    Completed
+                </button>
+
+
+                <button
+                    class="booking-filter-btn"
+                    onclick="filterBookings('CANCELLED', this)"
+                >
+                    Cancelled
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= BOOKINGS ================= -->
+
+        <section class="dashboard-section">
+
+            <div class="section-header">
+
+                <div>
+
+                    <h2>
+                        Your Service Requests
+                    </h2>
+
+                    <p>
+                        View the status of your bookings.
+                    </p>
+
+                </div>
+
+                <a
+                    href="services.html"
+                    class="primary-btn"
+                >
+                    + Book a Service
+                </a>
+
+            </div>
+
+
+            <div id="bookingsContainer">
+
+                <!-- Bookings will appear here -->
+
+            </div>
+
+
+            <!-- Empty State -->
+
+            <div
+                id="emptyBookings"
+                class="empty-bookings"
+            >
+
+                <div class="empty-icon">
+                    📋
+                </div>
+
+                <h3>
+                    No bookings found
+                </h3>
+
+                <p>
+                    You haven't created any bookings yet.
+                </p>
+
+                <a
+                    href="services.html"
+                    class="primary-btn"
+                >
+                    Find a Service
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+<script>
+
+    /* ========================================
+       LOAD BOOKINGS
+    ======================================== */
+
+    let bookings =
+        JSON.parse(
+            localStorage.getItem("coopBookings")
+        ) || [];
+
+
+    let currentFilter = "ALL";
+
+
+    /* ========================================
+       DISPLAY BOOKINGS
+    ======================================== */
+
+    function displayBookings() {
+
+        const container =
+            document.getElementById(
+                "bookingsContainer"
+            );
+
+        const empty =
+            document.getElementById(
+                "emptyBookings"
+            );
+
+
+        container.innerHTML = "";
+
+
+        let filteredBookings = bookings;
+
+
+        if (currentFilter !== "ALL") {
+
+            filteredBookings =
+                bookings.filter(
+                    booking =>
+                        booking.status === currentFilter
+                );
+
+        }
+
+
+        if (filteredBookings.length === 0) {
+
+            empty.style.display = "block";
+
+            return;
+
+        }
+
+
+        empty.style.display = "none";
+
+
+        filteredBookings
+            .slice()
+            .reverse()
+            .forEach(booking => {
+
+                const card =
+                    createBookingCard(booking);
+
+                container.appendChild(card);
+
+            });
+
+    }
+
+
+    /* ========================================
+       CREATE BOOKING CARD
+    ======================================== */
+
+    function createBookingCard(booking) {
+
+        const card =
+            document.createElement("div");
+
+
+        card.className =
+            "booking-list-card";
+
+
+        const statusClass =
+            booking.status
+                .toLowerCase()
+                .replace("_", "-");
+
+
+        card.innerHTML = `
+
+            <div class="booking-card-header">
+
+                <div>
+
+                    <span class="booking-id">
+                        ${booking.id}
+                    </span>
+
+                    <h3>
+                        ${booking.service}
+                    </h3>
+
+                </div>
+
+
+                <span
+                    class="status-badge ${statusClass}"
+                >
+                    ${formatStatus(booking.status)}
+                </span>
+
+            </div>
+
+
+            <div class="booking-card-body">
+
+
+                <div class="booking-detail-item">
+
+                    <span class="detail-icon">
+                        👷
+                    </span>
+
+                    <div>
+
+                        <small>
+                            Worker
+                        </small>
+
+                        <strong>
+                            ${booking.worker}
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="booking-detail-item">
+
+                    <span class="detail-icon">
+                        📅
+                    </span>
+
+                    <div>
+
+                        <small>
+                            Date
+                        </small>
+
+                        <strong>
+                            ${formatDate(booking.date)}
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="booking-detail-item">
+
+                    <span class="detail-icon">
+                        🕐
+                    </span>
+
+                    <div>
+
+                        <small>
+                            Time
+                        </small>
+
+                        <strong>
+                            ${booking.time}
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="booking-detail-item">
+
+                    <span class="detail-icon">
+                        💰
+                    </span>
+
+                    <div>
+
+                        <small>
+                            Fair Wage
+                        </small>
+
+                        <strong>
+                            ₹${booking.fairWage}
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+            <div class="booking-card-footer">
+
+                <div>
+
+                    <span class="payment-label">
+                        Payment
+                    </span>
+
+                    <span class="payment-status">
+                        ${booking.paymentStatus}
+                    </span>
+
+                </div>
+
+
+                <div class="booking-actions">
+
+                    <button
+                        class="secondary-btn"
+                        onclick="viewBooking('${booking.id}')"
+                    >
+                        View Details
+                    </button>
+
+
+                    ${
+                        booking.status === "PENDING"
+                        ?
+                        `
+                        <button
+                            class="danger-btn"
+                            onclick="cancelBooking('${booking.id}')"
+                        >
+                            Cancel
+                        </button>
+                        `
+                        :
+                        ""
+                    }
+
+                </div>
+
+            </div>
+
+        `;
+
+
+        return card;
+
+    }
+
+
+    /* ========================================
+       FORMAT STATUS
+    ======================================== */
+
+    function formatStatus(status) {
+
+        return status
+            .replace("_", " ")
+            .replace(/\b\w/g, letter =>
+                letter.toUpperCase()
+            );
+
+    }
+
+
+    /* ========================================
+       FORMAT DATE
+    ======================================== */
+
+    function formatDate(date) {
+
+        if (!date) {
+            return "Not selected";
+        }
+
+
+        const dateObject =
+            new Date(date + "T00:00:00");
+
+
+        return dateObject.toLocaleDateString(
+            "en-IN",
+            {
+                day: "numeric",
+                month: "short",
+                year: "numeric"
+            }
+        );
+
+    }
+
+
+    /* ========================================
+       FILTER BOOKINGS
+    ======================================== */
+
+    function filterBookings(
+        status,
+        button
+    ) {
+
+        currentFilter = status;
+
+
+        document
+            .querySelectorAll(
+                ".booking-filter-btn"
+            )
+            .forEach(btn => {
+
+                btn.classList.remove("active");
+
+            });
+
+
+        button.classList.add("active");
+
+
+        displayBookings();
+
+    }
+
+
+    /* ========================================
+       VIEW BOOKING
+    ======================================== */
+
+    function viewBooking(id) {
+
+        localStorage.setItem(
+            "selectedBookingId",
+            id
+        );
+
+
+        window.location.href =
+            "booking-details.html";
+
+    }
+
+
+    /* ========================================
+       CANCEL BOOKING
+    ======================================== */
+
+    function cancelBooking(id) {
+
+        const confirmed =
+            confirm(
+                "Are you sure you want to cancel this booking?"
+            );
+
+
+        if (!confirmed) {
+            return;
+        }
+
+
+        bookings =
+            bookings.map(booking => {
+
+                if (booking.id === id) {
+
+                    booking.status =
+                        "CANCELLED";
+
+                }
+
+                return booking;
+
+            });
+
+
+        localStorage.setItem(
+            "coopBookings",
+            JSON.stringify(bookings)
+        );
+
+
+        displayBookings();
+
+    }
+
+
+    /* ========================================
+       LOGOUT
+    ======================================== */
+
+    function logout() {
+
+        localStorage.removeItem("token");
+
+        localStorage.removeItem("user");
+
+        window.location.href =
+            "../login.html";
+
+    }
+
+
+    /* ========================================
+       INITIAL LOAD
+    ======================================== */
+
+    displayBookings();
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile - Co-Op Connect</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body class="dashboard-body">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+
+        <div class="sidebar-brand">
+            <div class="brand-icon">🤝</div>
+            <div>
+                <h2>Co-Op Connect</h2>
+                <span>Customer Portal</span>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+
+            <a href="dashboard.html" class="nav-item">
+                <span>🏠</span> Dashboard
+            </a>
+
+            <a href="services.html" class="nav-item">
+                <span>🔍</span> Find Services
+            </a>
+
+            <a href="workers.html" class="nav-item">
+                <span>👷</span> Find Workers
+            </a>
+
+            <a href="bookings.html" class="nav-item">
+                <span>📅</span> My Bookings
+            </a>
+
+            <a href="payments.html" class="nav-item">
+                <span>💳</span> Payments
+            </a>
+
+            <a href="reviews.html" class="nav-item">
+                <span>⭐</span> My Reviews
+            </a>
+
+            <a href="complaints.html" class="nav-item">
+                <span>⚠️</span> Complaints
+            </a>
+
+            <a href="profile.html" class="nav-item active">
+                <span>👤</span> My Profile
+            </a>
+
+            <button class="nav-item logout-btn" onclick="logout()">
+                <span>🚪</span> Logout
+            </button>
+
+        </nav>
+    </aside>
+
+
+    <!-- Main -->
+    <main class="dashboard-main">
+
+        <header class="dashboard-header">
+
+            <div>
+                <h1>My Profile</h1>
+                <p>Manage your personal information and account details.</p>
+            </div>
+
+            <div class="header-profile">
+
+                <div class="notification-icon">
+                    🔔
+                    <span class="notification-badge">2</span>
+                </div>
+
+                <div class="profile-mini">
+                    <div class="profile-avatar">V</div>
+
+                    <div>
+                        <strong>Varsha</strong>
+                        <span>Customer</span>
+                    </div>
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <div class="profile-page-grid">
+
+            <!-- Profile Card -->
+            <section class="dashboard-card profile-main-card">
+
+                <div class="profile-cover"></div>
+
+                <div class="profile-user">
+
+                    <div class="profile-large-avatar">
+                        V
+                    </div>
+
+                    <div>
+                        <h2 id="profileName">Varsha</h2>
+                        <span class="profile-role-badge">
+                            Customer
+                        </span>
+                    </div>
+
+                </div>
+
+                <div class="profile-divider"></div>
+
+                <h3>Personal Information</h3>
+
+                <form id="profileForm">
+
+                    <div class="form-row">
+
+                        <div class="form-group">
+                            <label>Full Name</label>
+
+                            <input
+                                type="text"
+                                id="profileFullName"
+                                value="Varsha"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label>Email</label>
+
+                            <input
+                                type="email"
+                                id="profileEmail"
+                                value="varsha@example.com"
+                                required
+                            >
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-row">
+
+                        <div class="form-group">
+                            <label>Phone Number</label>
+
+                            <input
+                                type="tel"
+                                id="profilePhone"
+                                value="+91 98765 43210"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label>City</label>
+
+                            <input
+                                type="text"
+                                id="profileCity"
+                                value="Tisaiyanvilai"
+                                required
+                            >
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>Address</label>
+
+                        <textarea
+                            id="profileAddress"
+                            rows="3"
+                            required
+                        >Tisaiyanvilai, Tirunelveli, Tamil Nadu</textarea>
+
+                    </div>
+
+
+                    <div id="profileMessage"
+                         class="form-message"
+                         style="display:none;">
+                    </div>
+
+
+                    <button type="submit" class="primary-btn">
+                        Save Changes
+                    </button>
+
+                </form>
+
+            </section>
+
+
+            <!-- Account Information -->
+            <aside>
+
+                <section class="dashboard-card account-card">
+
+                    <h3>Account Information</h3>
+
+                    <div class="account-item">
+                        <span>Account Type</span>
+                        <strong>Customer</strong>
+                    </div>
+
+                    <div class="account-item">
+                        <span>Member Since</span>
+                        <strong>September 2026</strong>
+                    </div>
+
+                    <div class="account-item">
+                        <span>Account Status</span>
+                        <span class="status-badge accepted">
+                            Active
+                        </span>
+                    </div>
+
+                    <div class="account-item">
+                        <span>Email Verification</span>
+                        <span class="verified-text">
+                            ✓ Verified
+                        </span>
+                    </div>
+
+                </section>
+
+
+                <!-- Security -->
+                <section class="dashboard-card security-card">
+
+                    <div class="security-icon">
+                        🔐
+                    </div>
+
+                    <h3>Account Security</h3>
+
+                    <p>
+                        Keep your account information secure.
+                    </p>
+
+                    <button
+                        class="secondary-btn"
+                        onclick="changePassword()">
+
+                        Change Password
+
+                    </button>
+
+                </section>
+
+
+                <!-- Cooperative -->
+                <section class="dashboard-card cooperative-card">
+
+                    <div class="cooperative-icon">
+                        🤝
+                    </div>
+
+                    <h3>Cooperative Membership</h3>
+
+                    <p>
+                        Your services are connected through the
+                        cooperative network.
+                    </p>
+
+                    <span class="membership-badge">
+                        ✓ Cooperative User
+                    </span>
+
+                </section>
+
+            </aside>
+
+        </div>
+
+    </main>
+
+
+<script>
+
+const profileForm =
+    document.getElementById("profileForm");
+
+profileForm.addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+    const name =
+        document.getElementById("profileFullName").value.trim();
+
+    const email =
+        document.getElementById("profileEmail").value.trim();
+
+    const phone =
+        document.getElementById("profilePhone").value.trim();
+
+    const city =
+        document.getElementById("profileCity").value.trim();
+
+    const address =
+        document.getElementById("profileAddress").value.trim();
+
+
+    if (!name || !email || !phone || !city || !address) {
+
+        showProfileMessage(
+            "Please fill in all fields.",
+            "error"
+        );
+
+        return;
+    }
+
+
+    const profileData = {
+        name,
+        email,
+        phone,
+        city,
+        address
+    };
+
+
+    localStorage.setItem(
+        "customerProfile",
+        JSON.stringify(profileData)
+    );
+
+
+    document.getElementById("profileName").textContent =
+        name;
+
+
+    showProfileMessage(
+        "Profile updated successfully!",
+        "success"
+    );
+
+});
+
+
+function loadProfile() {
+
+    const savedProfile =
+        JSON.parse(
+            localStorage.getItem("customerProfile")
+        );
+
+
+    if (!savedProfile) return;
+
+
+    document.getElementById("profileFullName").value =
+        savedProfile.name;
+
+    document.getElementById("profileEmail").value =
+        savedProfile.email;
+
+    document.getElementById("profilePhone").value =
+        savedProfile.phone;
+
+    document.getElementById("profileCity").value =
+        savedProfile.city;
+
+    document.getElementById("profileAddress").value =
+        savedProfile.address;
+
+    document.getElementById("profileName").textContent =
+        savedProfile.name;
+
+}
+
+
+function showProfileMessage(message, type) {
+
+    const messageBox =
+        document.getElementById("profileMessage");
+
+    messageBox.textContent = message;
+
+    messageBox.className =
+        "form-message " + type;
+
+    messageBox.style.display = "block";
+
+
+    setTimeout(() => {
+
+        messageBox.style.display = "none";
+
+    }, 3000);
+
+}
+
+
+function changePassword() {
+
+    alert(
+        "Password change will be connected to the backend authentication API."
+    );
+
+}
+
+
+function logout() {
+
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+
+    window.location.href =
+        "../login.html";
+}
+
+
+loadProfile();
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Worker - Co-Op Connect</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body class="dashboard-body">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+
+        <div class="sidebar-brand">
+            <div class="brand-icon">🤝</div>
+            <div>
+                <h2>Co-Op Connect</h2>
+                <span>Customer Portal</span>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+
+            <a href="dashboard.html" class="nav-item">
+                <span>🏠</span>
+                Dashboard
+            </a>
+
+            <a href="services.html" class="nav-item">
+                <span>🔧</span>
+                Find Services
+            </a>
+
+            <a href="workers.html" class="nav-item">
+                <span>👷</span>
+                Find Workers
+            </a>
+
+            <a href="bookings.html" class="nav-item">
+                <span>📋</span>
+                My Bookings
+            </a>
+
+            <a href="#" class="nav-item">
+                <span>💳</span>
+                Payments
+            </a>
+
+            <a href="#" class="nav-item">
+                <span>⭐</span>
+                My Reviews
+            </a>
+
+            <a href="#" class="nav-item">
+                <span>⚠️</span>
+                Complaints
+            </a>
+
+            <a href="#" class="nav-item">
+                <span>👤</span>
+                My Profile
+            </a>
+
+        </nav>
+
+        <button class="nav-item logout-btn" onclick="logout()">
+            <span>🚪</span>
+            Logout
+        </button>
+
+    </aside>
+
+
+    <!-- Main Content -->
+    <main class="dashboard-main">
+
+        <!-- Header -->
+        <header class="dashboard-header">
+
+            <div>
+                <h1>Book a Service</h1>
+                <p>Schedule your service with a verified cooperative worker.</p>
+            </div>
+
+            <div class="header-profile">
+                <div class="notification-icon">
+                    🔔
+                    <span class="notification-badge">2</span>
+                </div>
+
+                <div class="profile-mini">
+                    <div class="profile-avatar">V</div>
+
+                    <div>
+                        <strong>Varsha</strong>
+                        <small>Customer</small>
+                    </div>
+                </div>
+            </div>
+
+        </header>
+
+
+        <!-- Back -->
+        <a href="workers.html" class="back-link">
+            ← Back to Workers
+        </a>
+
+
+        <div class="booking-page-grid">
+
+            <!-- LEFT SIDE -->
+            <section>
+
+                <!-- Selected Worker -->
+                <div class="dashboard-card booking-worker-card">
+
+                    <div class="booking-worker-header">
+
+                        <div class="large-worker-photo">
+                            👨‍🔧
+                        </div>
+
+                        <div>
+                            <div class="verified-badge">
+                                ✓ Verified Worker
+                            </div>
+
+                            <h2 id="workerName">Raj Kumar</h2>
+
+                            <p id="workerService">
+                                Plumbing Specialist
+                            </p>
+
+                            <div class="booking-worker-rating">
+                                ⭐ 4.9
+                                <span>(124 reviews)</span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Booking Form -->
+                <div class="dashboard-card">
+
+                    <div class="section-header">
+                        <div>
+                            <h2>Service Details</h2>
+                            <p>Tell us what service you need.</p>
+                        </div>
+                    </div>
+
+
+                    <form id="bookingForm">
+
+                        <!-- Service -->
+                        <div class="form-group">
+
+                            <label for="service">
+                                Service Required
+                            </label>
+
+                            <select id="service" required>
+
+                                <option value="Plumbing">
+                                    Plumbing
+                                </option>
+
+                                <option value="Electrical">
+                                    Electrical
+                                </option>
+
+                                <option value="Carpentry">
+                                    Carpentry
+                                </option>
+
+                                <option value="Cleaning">
+                                    Cleaning
+                                </option>
+
+                                <option value="Painting">
+                                    Painting
+                                </option>
+
+                                <option value="Gardening">
+                                    Gardening
+                                </option>
+
+                                <option value="Caregiving">
+                                    Caregiving
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <!-- Description -->
+                        <div class="form-group">
+
+                            <label for="description">
+                                Describe the Service
+                            </label>
+
+                            <textarea
+                                id="description"
+                                rows="4"
+                                placeholder="Example: Need to repair leaking kitchen pipe..."
+                                required
+                            ></textarea>
+
+                        </div>
+
+
+                        <!-- Date and Time -->
+                        <div class="form-row">
+
+                            <div class="form-group">
+
+                                <label for="serviceDate">
+                                    Preferred Date
+                                </label>
+
+                                <input
+                                    type="date"
+                                    id="serviceDate"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="serviceTime">
+                                    Preferred Time
+                                </label>
+
+                                <input
+                                    type="time"
+                                    id="serviceTime"
+                                    required
+                                >
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Complexity -->
+                        <div class="form-group">
+
+                            <label for="complexity">
+                                Service Complexity
+                            </label>
+
+                            <select id="complexity" onchange="calculateWage()">
+
+                                <option value="Basic">
+                                    Basic — No Additional Charge
+                                </option>
+
+                                <option value="Standard" selected>
+                                    Standard — +₹100
+                                </option>
+
+                                <option value="Complex">
+                                    Complex — +₹200
+                                </option>
+
+                            </select>
+
+                            <small class="form-help">
+                                Complexity affects the transparent fair wage estimate.
+                            </small>
+
+                        </div>
+
+
+                        <!-- Address -->
+                        <div class="form-group">
+
+                            <label for="address">
+                                Service Address
+                            </label>
+
+                            <textarea
+                                id="address"
+                                rows="3"
+                                placeholder="Enter the address where the service is required..."
+                                required
+                            ></textarea>
+
+                        </div>
+
+
+                        <!-- Location -->
+                        <div class="location-action">
+
+                            <button
+                                type="button"
+                                class="secondary-btn"
+                                onclick="getBookingLocation()"
+                            >
+                                📍 Use My Current Location
+                            </button>
+
+                            <span id="locationStatus">
+                                Location not selected
+                            </span>
+
+                        </div>
+
+
+                        <div id="bookingMessage"></div>
+
+
+                        <button
+                            type="submit"
+                            class="primary-btn booking-confirm-btn"
+                        >
+                            Confirm Booking →
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </section>
+
+
+            <!-- RIGHT SIDE -->
+            <aside>
+
+                <!-- Fair Wage -->
+                <div class="fair-wage-card booking-wage-card">
+
+                    <div class="fair-wage-icon">
+                        💰
+                    </div>
+
+                    <h2>Fair Wage Estimate</h2>
+
+                    <p class="wage-note">
+                        Transparent pricing based on cooperative wage rules.
+                    </p>
+
+
+                    <div class="wage-breakdown">
+
+                        <div class="wage-row">
+                            <span>Base Wage</span>
+                            <strong id="baseWage">₹400</strong>
+                        </div>
+
+                        <div class="wage-row">
+                            <span>Skill Premium</span>
+                            <strong id="skillPremium">₹100</strong>
+                        </div>
+
+                        <div class="wage-row">
+                            <span>Travel / Distance</span>
+                            <strong id="travelCharge">₹50</strong>
+                        </div>
+
+                        <div class="wage-row">
+                            <span>Service Complexity</span>
+                            <strong id="complexityCharge">₹100</strong>
+                        </div>
+
+                    </div>
+
+
+                    <div class="total-wage booking-total">
+
+                        <span>Estimated Fair Wage</span>
+
+                        <strong id="totalWage">
+                            ₹650
+                        </strong>
+
+                    </div>
+
+
+                    <p class="transparent-note">
+                        ✓ Same transparent amount is shown to both
+                        customer and worker.
+                    </p>
+
+                </div>
+
+
+                <!-- Booking Summary -->
+                <div class="dashboard-card booking-summary-card">
+
+                    <h3>Booking Summary</h3>
+
+                    <div class="summary-row">
+                        <span>Worker</span>
+                        <strong id="summaryWorker">
+                            Raj Kumar
+                        </strong>
+                    </div>
+
+                    <div class="summary-row">
+                        <span>Service</span>
+                        <strong id="summaryService">
+                            Plumbing
+                        </strong>
+                    </div>
+
+                    <div class="summary-row">
+                        <span>Date</span>
+                        <strong id="summaryDate">
+                            Not selected
+                        </strong>
+                    </div>
+
+                    <div class="summary-row">
+                        <span>Time</span>
+                        <strong id="summaryTime">
+                            Not selected
+                        </strong>
+                    </div>
+
+                    <div class="summary-row">
+                        <span>Status</span>
+                        <span class="status-badge accepted">
+                            Pending Confirmation
+                        </span>
+                    </div>
+
+                </div>
+
+
+                <!-- Important Note -->
+                <div class="booking-info-box">
+
+                    <strong>🛡️ Cooperative Protection</strong>
+
+                    <p>
+                        Only verified cooperative workers can accept
+                        service requests. Your booking is monitored
+                        by the cooperative administration.
+                    </p>
+
+                </div>
+
+            </aside>
+
+        </div>
+
+    </main>
+
+
+<script>
+
+    /* --------------------------------
+       Worker Data
+    -------------------------------- */
+
+    const workerData = {
+
+        "Raj Kumar": {
+            service: "Plumbing",
+            base: 400,
+            skill: 100,
+            travel: 50
+        },
+
+        "Arun Kumar": {
+            service: "Electrical",
+            base: 400,
+            skill: 100,
+            travel: 50
+        },
+
+        "Meena": {
+            service: "Cleaning",
+            base: 350,
+            skill: 80,
+            travel: 50
+        },
+
+        "Suresh": {
+            service: "Carpentry",
+            base: 450,
+            skill: 120,
+            travel: 50
+        },
+
+        "Priya": {
+            service: "Painting",
+            base: 400,
+            skill: 100,
+            travel: 50
+        },
+
+        "Joseph": {
+            service: "Gardening",
+            base: 350,
+            skill: 80,
+            travel: 50
+        }
+
+    };
+
+
+    /* --------------------------------
+       Get Worker From URL
+    -------------------------------- */
+
+    const params = new URLSearchParams(window.location.search);
+
+    const selectedWorker =
+        params.get("worker") || "Raj Kumar";
+
+    const worker =
+        workerData[selectedWorker] || workerData["Raj Kumar"];
+
+
+    document.getElementById("workerName").textContent =
+        selectedWorker;
+
+    document.getElementById("workerService").textContent =
+        worker.service + " Specialist";
+
+    document.getElementById("summaryWorker").textContent =
+        selectedWorker;
+
+    document.getElementById("service").value =
+        worker.service;
+
+    document.getElementById("summaryService").textContent =
+        worker.service;
+
+
+    /* --------------------------------
+       Set Minimum Date
+    -------------------------------- */
+
+    const dateInput =
+        document.getElementById("serviceDate");
+
+    const today =
+        new Date().toISOString().split("T")[0];
+
+    dateInput.min = today;
+
+
+    /* --------------------------------
+       Fair Wage Calculation
+    -------------------------------- */
+
+    function calculateWage() {
+
+        const complexity =
+            document.getElementById("complexity").value;
+
+        let complexityCharge = 0;
+
+        if (complexity === "Standard") {
+            complexityCharge = 100;
+        }
+
+        if (complexity === "Complex") {
+            complexityCharge = 200;
+        }
+
+
+        const total =
+            worker.base +
+            worker.skill +
+            worker.travel +
+            complexityCharge;
+
+
+        document.getElementById("baseWage").textContent =
+            "₹" + worker.base;
+
+        document.getElementById("skillPremium").textContent =
+            "₹" + worker.skill;
+
+        document.getElementById("travelCharge").textContent =
+            "₹" + worker.travel;
+
+        document.getElementById("complexityCharge").textContent =
+            "₹" + complexityCharge;
+
+        document.getElementById("totalWage").textContent =
+            "₹" + total;
+
+    }
+
+
+    /* --------------------------------
+       Date / Time Summary
+    -------------------------------- */
+
+    dateInput.addEventListener("change", function () {
+
+        document.getElementById("summaryDate").textContent =
+            this.value || "Not selected";
+
+    });
+
+
+    document.getElementById("serviceTime")
+        .addEventListener("change", function () {
+
+            document.getElementById("summaryTime").textContent =
+                this.value || "Not selected";
+
+        });
+
+
+    document.getElementById("service")
+        .addEventListener("change", function () {
+
+            document.getElementById("summaryService").textContent =
+                this.value;
+
+        });
+
+
+    /* --------------------------------
+       Browser Location
+    -------------------------------- */
+
+    function getBookingLocation() {
+
+        const status =
+            document.getElementById("locationStatus");
+
+
+        if (!navigator.geolocation) {
+
+            status.textContent =
+                "Geolocation is not supported.";
+
+            return;
+        }
+
+
+        status.textContent =
+            "Getting your location...";
+
+
+        navigator.geolocation.getCurrentPosition(
+
+            function(position) {
+
+                const latitude =
+                    position.coords.latitude;
+
+                const longitude =
+                    position.coords.longitude;
+
+
+                localStorage.setItem(
+                    "customerLocation",
+                    JSON.stringify({
+                        latitude,
+                        longitude
+                    })
+                );
+
+
+                status.textContent =
+                    "✓ Location captured";
+
+            },
+
+            function() {
+
+                status.textContent =
+                    "Unable to access location.";
+
+            }
+
+        );
+
+    }
+
+
+    /* --------------------------------
+       Confirm Booking
+    -------------------------------- */
+
+    document.getElementById("bookingForm")
+        .addEventListener("submit", function(event) {
+
+            event.preventDefault();
+
+
+            const service =
+                document.getElementById("service").value;
+
+            const description =
+                document.getElementById("description").value;
+
+            const date =
+                document.getElementById("serviceDate").value;
+
+            const time =
+                document.getElementById("serviceTime").value;
+
+            const address =
+                document.getElementById("address").value;
+
+            const complexity =
+                document.getElementById("complexity").value;
+
+
+            let complexityCharge = 0;
+
+            if (complexity === "Standard") {
+                complexityCharge = 100;
+            }
+
+            if (complexity === "Complex") {
+                complexityCharge = 200;
+            }
+
+
+            const total =
+                worker.base +
+                worker.skill +
+                worker.travel +
+                complexityCharge;
+
+
+            const booking = {
+
+                id: "BK" + Date.now(),
+
+                worker: selectedWorker,
+
+                service: service,
+
+                description: description,
+
+                date: date,
+
+                time: time,
+
+                address: address,
+
+                complexity: complexity,
+
+                baseWage: worker.base,
+
+                skillPremium: worker.skill,
+
+                travelCharge: worker.travel,
+
+                complexityCharge: complexityCharge,
+
+                fairWage: total,
+
+                status: "PENDING",
+
+                paymentStatus: "PENDING",
+
+                createdAt: new Date().toISOString()
+
+            };
+
+
+            /* Get existing bookings */
+
+            const existingBookings =
+                JSON.parse(
+                    localStorage.getItem("coopBookings")
+                ) || [];
+
+
+            existingBookings.push(booking);
+
+
+            localStorage.setItem(
+                "coopBookings",
+                JSON.stringify(existingBookings)
+            );
+
+
+            document.getElementById("bookingMessage").innerHTML = `
+
+                <div class="form-message success">
+
+                    ✓ Booking request created successfully!
+
+                    <br>
+
+                    Booking ID:
+                    <strong>${booking.id}</strong>
+
+                </div>
+
+            `;
+
+
+            setTimeout(function() {
+
+                window.location.href =
+                    "bookings.html";
+
+            }, 1200);
+
+        });
+
+
+    /* --------------------------------
+       Logout
+    -------------------------------- */
+
+    function logout() {
+
+        localStorage.removeItem("token");
+        localStorage.removeItem("user");
+
+        window.location.href =
+            "../login.html";
+
+    }
+
+
+    /* Initial calculation */
+
+    calculateWage();
+
+</script>
+
+</body>
+</html>

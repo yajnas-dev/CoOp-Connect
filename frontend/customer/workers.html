@@ -1,0 +1,1076 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Find Workers | Co-Op Connect</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body class="dashboard-body">
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar">
+
+        <div class="sidebar-brand">
+
+            <span class="brand-icon">🤝</span>
+
+            <div>
+                <h2>Co-Op Connect</h2>
+                <small>Customer</small>
+            </div>
+
+        </div>
+
+
+        <nav class="sidebar-nav">
+
+            <a href="dashboard.html" class="nav-item">
+                🏠 <span>Dashboard</span>
+            </a>
+
+            <a href="services.html" class="nav-item">
+                🔧 <span>Find Services</span>
+            </a>
+
+            <a href="workers.html" class="nav-item active">
+                👷 <span>Find Workers</span>
+            </a>
+
+            <a href="bookings.html" class="nav-item">
+                📅 <span>My Bookings</span>
+            </a>
+
+            <a href="payments.html" class="nav-item">
+                💳 <span>Payments</span>
+            </a>
+
+            <a href="reviews.html" class="nav-item">
+                ⭐ <span>My Reviews</span>
+            </a>
+
+            <a href="complaints.html" class="nav-item">
+                ⚠️ <span>Complaints</span>
+            </a>
+
+            <a href="profile.html" class="nav-item">
+                👤 <span>My Profile</span>
+            </a>
+
+        </nav>
+
+
+        <button class="logout-btn" onclick="logout()">
+            🚪 Logout
+        </button>
+
+    </aside>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="dashboard-main">
+
+
+        <!-- HEADER -->
+
+        <header class="dashboard-header">
+
+            <div>
+
+                <h1>Find Verified Workers 👷</h1>
+
+                <p>
+                    Choose a trusted cooperative worker for your service.
+                </p>
+
+            </div>
+
+        </header>
+
+
+        <!-- ================= SEARCH & FILTER ================= -->
+
+        <section class="worker-search-section">
+
+            <div class="worker-search">
+
+                <input
+                    type="text"
+                    id="workerSearch"
+                    placeholder="Search worker or skill..."
+                    oninput="filterWorkers()"
+                >
+
+                <button onclick="filterWorkers()">
+                    🔍 Search
+                </button>
+
+            </div>
+
+
+            <div class="filter-row">
+
+                <select id="serviceFilter" onchange="filterWorkers()">
+
+                    <option value="">All Services</option>
+
+                    <option value="Electrical">
+                        Electrical
+                    </option>
+
+                    <option value="Plumbing">
+                        Plumbing
+                    </option>
+
+                    <option value="Carpentry">
+                        Carpentry
+                    </option>
+
+                    <option value="Cleaning">
+                        Cleaning
+                    </option>
+
+                    <option value="Painting">
+                        Painting
+                    </option>
+
+                    <option value="Gardening">
+                        Gardening
+                    </option>
+
+                    <option value="Caregiving">
+                        Caregiving
+                    </option>
+
+                </select>
+
+
+                <select id="ratingFilter" onchange="filterWorkers()">
+
+                    <option value="">Any Rating</option>
+
+                    <option value="4">
+                        4★ & above
+                    </option>
+
+                    <option value="4.5">
+                        4.5★ & above
+                    </option>
+
+                </select>
+
+
+                <select id="availabilityFilter" onchange="filterWorkers()">
+
+                    <option value="">Any Availability</option>
+
+                    <option value="Available">
+                        Available Now
+                    </option>
+
+                    <option value="Busy">
+                        Currently Busy
+                    </option>
+
+                </select>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= LOCATION ================= -->
+
+        <div class="location-banner">
+
+            <div>
+
+                <strong>📍 Your location</strong>
+
+                <p id="locationText">
+                    Location will be detected to find nearby workers.
+                </p>
+
+            </div>
+
+            <button onclick="getLocation()">
+                Use My Location
+            </button>
+
+        </div>
+
+
+        <!-- ================= RESULT HEADER ================= -->
+
+        <div class="worker-result-header">
+
+            <div>
+
+                <h2>
+                    Available Workers
+                </h2>
+
+                <p id="resultCount">
+                    Showing 6 verified workers
+                </p>
+
+            </div>
+
+            <select id="sortWorkers" onchange="sortWorkers()">
+
+                <option value="rating">
+                    Highest Rated
+                </option>
+
+                <option value="distance">
+                    Nearest First
+                </option>
+
+                <option value="experience">
+                    Most Experienced
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <!-- ================= WORKERS ================= -->
+
+        <section class="worker-grid" id="workerGrid">
+
+
+            <!-- WORKER 1 -->
+
+            <div
+                class="worker-card"
+                data-name="Raj Kumar"
+                data-service="Plumbing"
+                data-rating="4.9"
+                data-distance="2.4"
+                data-experience="8"
+                data-availability="Available"
+            >
+
+                <div class="worker-card-top">
+
+                    <div class="worker-photo">
+                        RK
+                    </div>
+
+                    <span class="verified-badge">
+                        ✓ Verified
+                    </span>
+
+                </div>
+
+
+                <h3>Raj Kumar</h3>
+
+                <p class="worker-role">
+                    🔧 Plumbing Specialist
+                </p>
+
+
+                <div class="worker-rating">
+                    ⭐ <strong>4.9</strong>
+
+                    <span>
+                        (124 reviews)
+                    </span>
+                </div>
+
+
+                <div class="worker-details">
+
+                    <span>
+                        💼 8 years experience
+                    </span>
+
+                    <span>
+                        📍 2.4 km away
+                    </span>
+
+                    <span class="available-text">
+                        ● Available Now
+                    </span>
+
+                </div>
+
+
+                <div class="worker-skills">
+
+                    <span>Pipe Repair</span>
+                    <span>Water Systems</span>
+                    <span>Leakage</span>
+
+                </div>
+
+
+                <div class="worker-actions">
+
+                    <button
+                        class="secondary-btn"
+                        onclick="viewWorker('Raj Kumar')"
+                    >
+                        View Profile
+                    </button>
+
+                    <button
+                        class="primary-btn"
+                        onclick="bookWorker('Raj Kumar')"
+                    >
+                        Book Now
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- WORKER 2 -->
+
+            <div
+                class="worker-card"
+                data-name="Arun Kumar"
+                data-service="Electrical"
+                data-rating="4.8"
+                data-distance="3.1"
+                data-experience="6"
+                data-availability="Available"
+            >
+
+                <div class="worker-card-top">
+
+                    <div class="worker-photo">
+                        AK
+                    </div>
+
+                    <span class="verified-badge">
+                        ✓ Verified
+                    </span>
+
+                </div>
+
+
+                <h3>Arun Kumar</h3>
+
+                <p class="worker-role">
+                    ⚡ Electrical Specialist
+                </p>
+
+
+                <div class="worker-rating">
+                    ⭐ <strong>4.8</strong>
+
+                    <span>
+                        (98 reviews)
+                    </span>
+                </div>
+
+
+                <div class="worker-details">
+
+                    <span>
+                        💼 6 years experience
+                    </span>
+
+                    <span>
+                        📍 3.1 km away
+                    </span>
+
+                    <span class="available-text">
+                        ● Available Now
+                    </span>
+
+                </div>
+
+
+                <div class="worker-skills">
+
+                    <span>Wiring</span>
+                    <span>Fan Repair</span>
+                    <span>Installation</span>
+
+                </div>
+
+
+                <div class="worker-actions">
+
+                    <button
+                        class="secondary-btn"
+                        onclick="viewWorker('Arun Kumar')"
+                    >
+                        View Profile
+                    </button>
+
+                    <button
+                        class="primary-btn"
+                        onclick="bookWorker('Arun Kumar')"
+                    >
+                        Book Now
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- WORKER 3 -->
+
+            <div
+                class="worker-card"
+                data-name="Meena"
+                data-service="Cleaning"
+                data-rating="4.8"
+                data-distance="1.8"
+                data-experience="5"
+                data-availability="Available"
+            >
+
+                <div class="worker-card-top">
+
+                    <div class="worker-photo">
+                        M
+                    </div>
+
+                    <span class="verified-badge">
+                        ✓ Verified
+                    </span>
+
+                </div>
+
+
+                <h3>Meena</h3>
+
+                <p class="worker-role">
+                    🧹 Cleaning Specialist
+                </p>
+
+
+                <div class="worker-rating">
+                    ⭐ <strong>4.8</strong>
+
+                    <span>
+                        (86 reviews)
+                    </span>
+                </div>
+
+
+                <div class="worker-details">
+
+                    <span>
+                        💼 5 years experience
+                    </span>
+
+                    <span>
+                        📍 1.8 km away
+                    </span>
+
+                    <span class="available-text">
+                        ● Available Now
+                    </span>
+
+                </div>
+
+
+                <div class="worker-skills">
+
+                    <span>Deep Cleaning</span>
+                    <span>Home Cleaning</span>
+                    <span>Office</span>
+
+                </div>
+
+
+                <div class="worker-actions">
+
+                    <button
+                        class="secondary-btn"
+                        onclick="viewWorker('Meena')"
+                    >
+                        View Profile
+                    </button>
+
+                    <button
+                        class="primary-btn"
+                        onclick="bookWorker('Meena')"
+                    >
+                        Book Now
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- WORKER 4 -->
+
+            <div
+                class="worker-card"
+                data-name="Suresh"
+                data-service="Carpentry"
+                data-rating="4.7"
+                data-distance="4.2"
+                data-experience="10"
+                data-availability="Busy"
+            >
+
+                <div class="worker-card-top">
+
+                    <div class="worker-photo">
+                        S
+                    </div>
+
+                    <span class="verified-badge">
+                        ✓ Verified
+                    </span>
+
+                </div>
+
+
+                <h3>Suresh</h3>
+
+                <p class="worker-role">
+                    🪚 Carpentry Specialist
+                </p>
+
+
+                <div class="worker-rating">
+                    ⭐ <strong>4.7</strong>
+
+                    <span>
+                        (75 reviews)
+                    </span>
+                </div>
+
+
+                <div class="worker-details">
+
+                    <span>
+                        💼 10 years experience
+                    </span>
+
+                    <span>
+                        📍 4.2 km away
+                    </span>
+
+                    <span class="busy-text">
+                        ● Currently Busy
+                    </span>
+
+                </div>
+
+
+                <div class="worker-skills">
+
+                    <span>Furniture</span>
+                    <span>Woodwork</span>
+                    <span>Doors</span>
+
+                </div>
+
+
+                <div class="worker-actions">
+
+                    <button
+                        class="secondary-btn"
+                        onclick="viewWorker('Suresh')"
+                    >
+                        View Profile
+                    </button>
+
+                    <button
+                        class="primary-btn"
+                        disabled
+                    >
+                        Currently Busy
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- WORKER 5 -->
+
+            <div
+                class="worker-card"
+                data-name="Priya"
+                data-service="Painting"
+                data-rating="4.6"
+                data-distance="5.0"
+                data-experience="7"
+                data-availability="Available"
+            >
+
+                <div class="worker-card-top">
+
+                    <div class="worker-photo">
+                        P
+                    </div>
+
+                    <span class="verified-badge">
+                        ✓ Verified
+                    </span>
+
+                </div>
+
+
+                <h3>Priya</h3>
+
+                <p class="worker-role">
+                    🎨 Painting Specialist
+                </p>
+
+
+                <div class="worker-rating">
+                    ⭐ <strong>4.6</strong>
+
+                    <span>
+                        (64 reviews)
+                    </span>
+                </div>
+
+
+                <div class="worker-details">
+
+                    <span>
+                        💼 7 years experience
+                    </span>
+
+                    <span>
+                        📍 5.0 km away
+                    </span>
+
+                    <span class="available-text">
+                        ● Available Now
+                    </span>
+
+                </div>
+
+
+                <div class="worker-skills">
+
+                    <span>Interior</span>
+                    <span>Exterior</span>
+                    <span>Wall Painting</span>
+
+                </div>
+
+
+                <div class="worker-actions">
+
+                    <button
+                        class="secondary-btn"
+                        onclick="viewWorker('Priya')"
+                    >
+                        View Profile
+                    </button>
+
+                    <button
+                        class="primary-btn"
+                        onclick="bookWorker('Priya')"
+                    >
+                        Book Now
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- WORKER 6 -->
+
+            <div
+                class="worker-card"
+                data-name="Joseph"
+                data-service="Gardening"
+                data-rating="4.5"
+                data-distance="2.9"
+                data-experience="6"
+                data-availability="Available"
+            >
+
+                <div class="worker-card-top">
+
+                    <div class="worker-photo">
+                        J
+                    </div>
+
+                    <span class="verified-badge">
+                        ✓ Verified
+                    </span>
+
+                </div>
+
+
+                <h3>Joseph</h3>
+
+                <p class="worker-role">
+                    🌱 Gardening Specialist
+                </p>
+
+
+                <div class="worker-rating">
+                    ⭐ <strong>4.5</strong>
+
+                    <span>
+                        (52 reviews)
+                    </span>
+                </div>
+
+
+                <div class="worker-details">
+
+                    <span>
+                        💼 6 years experience
+                    </span>
+
+                    <span>
+                        📍 2.9 km away
+                    </span>
+
+                    <span class="available-text">
+                        ● Available Now
+                    </span>
+
+                </div>
+
+
+                <div class="worker-skills">
+
+                    <span>Gardening</span>
+                    <span>Pruning</span>
+                    <span>Landscaping</span>
+
+                </div>
+
+
+                <div class="worker-actions">
+
+                    <button
+                        class="secondary-btn"
+                        onclick="viewWorker('Joseph')"
+                    >
+                        View Profile
+                    </button>
+
+                    <button
+                        class="primary-btn"
+                        onclick="bookWorker('Joseph')"
+                    >
+                        Book Now
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- NO RESULTS -->
+
+        <div
+            id="noWorkers"
+            class="no-service-message"
+            style="display:none;"
+        >
+
+            <div>👷</div>
+
+            <h3>No workers found</h3>
+
+            <p>
+                Try changing your search or filters.
+            </p>
+
+        </div>
+
+    </main>
+
+
+    <script src="../js/app.js"></script>
+
+
+    <script>
+
+        /* =========================
+           READ SERVICE FROM URL
+        ========================= */
+
+        const params =
+            new URLSearchParams(window.location.search);
+
+        const selectedService =
+            params.get("service");
+
+        if (selectedService) {
+
+            document.getElementById("serviceFilter").value =
+                selectedService;
+
+            filterWorkers();
+
+        }
+
+
+        /* =========================
+           FILTER WORKERS
+        ========================= */
+
+        function filterWorkers() {
+
+            const search =
+                document
+                .getElementById("workerSearch")
+                .value
+                .toLowerCase()
+                .trim();
+
+            const service =
+                document
+                .getElementById("serviceFilter")
+                .value;
+
+            const rating =
+                parseFloat(
+                    document
+                    .getElementById("ratingFilter")
+                    .value
+                ) || 0;
+
+            const availability =
+                document
+                .getElementById("availabilityFilter")
+                .value;
+
+
+            const cards =
+                document.querySelectorAll(".worker-card");
+
+            let visibleCount = 0;
+
+
+            cards.forEach(card => {
+
+                const name =
+                    card.dataset.name.toLowerCase();
+
+                const workerService =
+                    card.dataset.service;
+
+                const workerRating =
+                    parseFloat(card.dataset.rating);
+
+                const workerAvailability =
+                    card.dataset.availability;
+
+
+                const matchesSearch =
+                    !search ||
+                    name.includes(search) ||
+                    workerService.toLowerCase().includes(search);
+
+
+                const matchesService =
+                    !service ||
+                    workerService === service;
+
+
+                const matchesRating =
+                    workerRating >= rating;
+
+
+                const matchesAvailability =
+                    !availability ||
+                    workerAvailability === availability;
+
+
+                if (
+                    matchesSearch &&
+                    matchesService &&
+                    matchesRating &&
+                    matchesAvailability
+                ) {
+
+                    card.style.display = "flex";
+                    visibleCount++;
+
+                } else {
+
+                    card.style.display = "none";
+
+                }
+
+            });
+
+
+            document.getElementById("resultCount").textContent =
+                `Showing ${visibleCount} verified worker${visibleCount !== 1 ? "s" : ""}`;
+
+
+            document.getElementById("noWorkers").style.display =
+                visibleCount === 0 ? "block" : "none";
+
+        }
+
+
+        /* =========================
+           SORT WORKERS
+        ========================= */
+
+        function sortWorkers() {
+
+            const sort =
+                document.getElementById("sortWorkers").value;
+
+            const grid =
+                document.getElementById("workerGrid");
+
+            const cards =
+                Array.from(
+                    grid.querySelectorAll(".worker-card")
+                );
+
+
+            cards.sort((a, b) => {
+
+                if (sort === "rating") {
+
+                    return (
+                        parseFloat(b.dataset.rating) -
+                        parseFloat(a.dataset.rating)
+                    );
+
+                }
+
+                if (sort === "distance") {
+
+                    return (
+                        parseFloat(a.dataset.distance) -
+                        parseFloat(b.dataset.distance)
+                    );
+
+                }
+
+                if (sort === "experience") {
+
+                    return (
+                        parseFloat(b.dataset.experience) -
+                        parseFloat(a.dataset.experience)
+                    );
+
+                }
+
+            });
+
+
+            cards.forEach(card => grid.appendChild(card));
+
+        }
+
+
+        /* =========================
+           LOCATION
+        ========================= */
+
+        function getLocation() {
+
+            const locationText =
+                document.getElementById("locationText");
+
+
+            if (!navigator.geolocation) {
+
+                locationText.textContent =
+                    "Geolocation is not supported by this browser.";
+
+                return;
+
+            }
+
+
+            locationText.textContent =
+                "Detecting your location...";
+
+
+            navigator.geolocation.getCurrentPosition(
+
+                function(position) {
+
+                    const latitude =
+                        position.coords.latitude;
+
+                    const longitude =
+                        position.coords.longitude;
+
+
+                    locationText.textContent =
+                        `Location detected • ${latitude.toFixed(4)}, ${longitude.toFixed(4)}`;
+
+                },
+
+                function() {
+
+                    locationText.textContent =
+                        "Unable to detect location. Please allow location access.";
+
+                }
+
+            );
+
+        }
+
+
+        /* =========================
+           VIEW WORKER
+        ========================= */
+
+        function viewWorker(worker) {
+
+            window.location.href =
+                "worker-details.html?worker=" +
+                encodeURIComponent(worker);
+
+        }
+
+
+        /* =========================
+           BOOK WORKER
+        ========================= */
+
+        function bookWorker(worker) {
+
+            window.location.href =
+                "booking.html?worker=" +
+                encodeURIComponent(worker);
+
+        }
+
+
+        /* =========================
+           LOGOUT
+        ========================= */
+
+        function logout() {
+
+            localStorage.removeItem("token");
+            localStorage.removeItem("user");
+
+            window.location.href =
+                "../login.html";
+
+        }
+
+    </script>
+
+</body>
+</html>

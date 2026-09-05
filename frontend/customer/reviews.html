@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Reviews - Co-Op Connect</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body class="dashboard-body">
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar">
+
+        <div class="sidebar-brand">
+
+            <div class="brand-icon">🤝</div>
+
+            <div>
+                <h2>Co-Op Connect</h2>
+                <span>Customer Portal</span>
+            </div>
+
+        </div>
+
+
+        <nav class="sidebar-nav">
+
+            <a href="dashboard.html" class="nav-item">
+                <span>🏠</span>
+                Dashboard
+            </a>
+
+            <a href="services.html" class="nav-item">
+                <span>🔧</span>
+                Find Services
+            </a>
+
+            <a href="workers.html" class="nav-item">
+                <span>👷</span>
+                Find Workers
+            </a>
+
+            <a href="bookings.html" class="nav-item">
+                <span>📋</span>
+                My Bookings
+            </a>
+
+            <a href="#" class="nav-item">
+                <span>💳</span>
+                Payments
+            </a>
+
+            <a href="reviews.html" class="nav-item active">
+                <span>⭐</span>
+                My Reviews
+            </a>
+
+            <a href="#" class="nav-item">
+                <span>⚠️</span>
+                Complaints
+            </a>
+
+            <a href="#" class="nav-item">
+                <span>👤</span>
+                My Profile
+            </a>
+
+        </nav>
+
+
+        <button
+            class="nav-item logout-btn"
+            onclick="logout()"
+        >
+            <span>🚪</span>
+            Logout
+        </button>
+
+    </aside>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="dashboard-main">
+
+        <!-- Header -->
+
+        <header class="dashboard-header">
+
+            <div>
+
+                <h1>My Reviews</h1>
+
+                <p>
+                    Share your experience with cooperative workers.
+                </p>
+
+            </div>
+
+
+            <div class="header-profile">
+
+                <div class="notification-icon">
+                    🔔
+                    <span class="notification-badge">2</span>
+                </div>
+
+                <div class="profile-mini">
+
+                    <div class="profile-avatar">
+                        V
+                    </div>
+
+                    <div>
+                        <strong>Varsha</strong>
+                        <small>Customer</small>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- ================= REVIEW FORM ================= -->
+
+        <section class="dashboard-card review-form-card">
+
+            <div class="section-header">
+
+                <div>
+
+                    <h2>Rate a Completed Service</h2>
+
+                    <p>
+                        Your feedback helps maintain service quality.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <form id="reviewForm">
+
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label for="reviewWorker">
+                            Worker
+                        </label>
+
+                        <select id="reviewWorker" required>
+                            <option value="">
+                                Select Worker
+                            </option>
+
+                            <option value="Raj Kumar">
+                                Raj Kumar — Plumbing
+                            </option>
+
+                            <option value="Arun Kumar">
+                                Arun Kumar — Electrical
+                            </option>
+
+                            <option value="Meena">
+                                Meena — Cleaning
+                            </option>
+
+                            <option value="Suresh">
+                                Suresh — Carpentry
+                            </option>
+
+                            <option value="Priya">
+                                Priya — Painting
+                            </option>
+
+                            <option value="Joseph">
+                                Joseph — Gardening
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="reviewService">
+                            Service
+                        </label>
+
+                        <select id="reviewService" required>
+
+                            <option value="">
+                                Select Service
+                            </option>
+
+                            <option value="Plumbing">
+                                Plumbing
+                            </option>
+
+                            <option value="Electrical">
+                                Electrical
+                            </option>
+
+                            <option value="Carpentry">
+                                Carpentry
+                            </option>
+
+                            <option value="Cleaning">
+                                Cleaning
+                            </option>
+
+                            <option value="Painting">
+                                Painting
+                            </option>
+
+                            <option value="Gardening">
+                                Gardening
+                            </option>
+
+                            <option value="Caregiving">
+                                Caregiving
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Star Rating -->
+
+                <div class="form-group">
+
+                    <label>
+                        Your Rating
+                    </label>
+
+                    <div
+                        class="star-rating"
+                        id="starRating"
+                    >
+
+                        <button
+                            type="button"
+                            class="star-btn"
+                            data-rating="1"
+                        >
+                            ★
+                        </button>
+
+                        <button
+                            type="button"
+                            class="star-btn"
+                            data-rating="2"
+                        >
+                            ★
+                        </button>
+
+                        <button
+                            type="button"
+                            class="star-btn"
+                            data-rating="3"
+                        >
+                            ★
+                        </button>
+
+                        <button
+                            type="button"
+                            class="star-btn"
+                            data-rating="4"
+                        >
+                            ★
+                        </button>
+
+                        <button
+                            type="button"
+                            class="star-btn"
+                            data-rating="5"
+                        >
+                            ★
+                        </button>
+
+                    </div>
+
+                    <span
+                        id="ratingText"
+                        class="rating-text"
+                    >
+                        Select a rating
+                    </span>
+
+                </div>
+
+
+                <!-- Review -->
+
+                <div class="form-group">
+
+                    <label for="reviewText">
+                        Your Review
+                    </label>
+
+                    <textarea
+                        id="reviewText"
+                        rows="5"
+                        placeholder="Tell us about your experience..."
+                        required
+                    ></textarea>
+
+                </div>
+
+
+                <div id="reviewMessage"></div>
+
+
+                <button
+                    type="submit"
+                    class="primary-btn"
+                >
+                    Submit Review
+                </button>
+
+            </form>
+
+        </section>
+
+
+        <!-- ================= REVIEWS ================= -->
+
+        <section class="dashboard-section">
+
+            <div class="section-header">
+
+                <div>
+
+                    <h2>Your Submitted Reviews</h2>
+
+                    <p>
+                        Reviews you have shared with the cooperative community.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div id="reviewsContainer">
+
+                <!-- Reviews inserted by JavaScript -->
+
+            </div>
+
+
+            <div
+                id="emptyReviews"
+                class="empty-bookings"
+            >
+
+                <div class="empty-icon">
+                    ⭐
+                </div>
+
+                <h3>
+                    No Reviews Yet
+                </h3>
+
+                <p>
+                    Complete a service and share your experience.
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+<script>
+
+    /* ========================================
+       STAR RATING
+    ======================================== */
+
+    let selectedRating = 0;
+
+
+    const starButtons =
+        document.querySelectorAll(".star-btn");
+
+
+    starButtons.forEach(star => {
+
+        star.addEventListener(
+            "click",
+            function() {
+
+                selectedRating =
+                    Number(
+                        this.dataset.rating
+                    );
+
+                updateStars();
+
+            }
+        );
+
+    });
+
+
+    function updateStars() {
+
+        starButtons.forEach(star => {
+
+            const rating =
+                Number(star.dataset.rating);
+
+
+            if (rating <= selectedRating) {
+
+                star.classList.add("selected");
+
+            }
+            else {
+
+                star.classList.remove("selected");
+
+            }
+
+        });
+
+
+        const ratingText =
+            document.getElementById(
+                "ratingText"
+            );
+
+
+        const messages = {
+
+            1: "Poor",
+            2: "Fair",
+            3: "Good",
+            4: "Very Good",
+            5: "Excellent"
+
+        };
+
+
+        ratingText.textContent =
+            messages[selectedRating];
+
+    }
+
+
+    /* ========================================
+       REVIEW SUBMISSION
+    ======================================== */
+
+    document
+        .getElementById("reviewForm")
+        .addEventListener(
+            "submit",
+            function(event) {
+
+                event.preventDefault();
+
+
+                if (selectedRating === 0) {
+
+                    showMessage(
+                        "Please select a star rating.",
+                        "error"
+                    );
+
+                    return;
+
+                }
+
+
+                const worker =
+                    document.getElementById(
+                        "reviewWorker"
+                    ).value;
+
+
+                const service =
+                    document.getElementById(
+                        "reviewService"
+                    ).value;
+
+
+                const text =
+                    document.getElementById(
+                        "reviewText"
+                    ).value.trim();
+
+
+                if (!worker || !service || !text) {
+
+                    showMessage(
+                        "Please complete all fields.",
+                        "error"
+                    );
+
+                    return;
+
+                }
+
+
+                const review = {
+
+                    id: "REV" + Date.now(),
+
+                    worker: worker,
+
+                    service: service,
+
+                    rating: selectedRating,
+
+                    text: text,
+
+                    date:
+                        new Date().toISOString()
+
+                };
+
+
+                const reviews =
+                    JSON.parse(
+                        localStorage.getItem(
+                            "coopReviews"
+                        )
+                    ) || [];
+
+
+                reviews.push(review);
+
+
+                localStorage.setItem(
+                    "coopReviews",
+                    JSON.stringify(reviews)
+                );
+
+
+                showMessage(
+                    "✓ Review submitted successfully!",
+                    "success"
+                );
+
+
+                document
+                    .getElementById("reviewForm")
+                    .reset();
+
+
+                selectedRating = 0;
+
+                updateStars();
+
+
+                displayReviews();
+
+            }
+        );
+
+
+    /* ========================================
+       MESSAGE
+    ======================================== */
+
+    function showMessage(
+        message,
+        type
+    ) {
+
+        document.getElementById(
+            "reviewMessage"
+        ).innerHTML = `
+
+            <div class="form-message ${type}">
+                ${message}
+            </div>
+
+        `;
+
+    }
+
+
+    /* ========================================
+       DISPLAY REVIEWS
+    ======================================== */
+
+    function displayReviews() {
+
+        const container =
+            document.getElementById(
+                "reviewsContainer"
+            );
+
+
+        const empty =
+            document.getElementById(
+                "emptyReviews"
+            );
+
+
+        const reviews =
+            JSON.parse(
+                localStorage.getItem(
+                    "coopReviews"
+                )
+            ) || [];
+
+
+        container.innerHTML = "";
+
+
+        if (reviews.length === 0) {
+
+            empty.style.display = "block";
+
+            return;
+
+        }
+
+
+        empty.style.display = "none";
+
+
+        reviews
+            .slice()
+            .reverse()
+            .forEach(review => {
+
+                const card =
+                    document.createElement("div");
+
+
+                card.className =
+                    "customer-review-card";
+
+
+                card.innerHTML = `
+
+                    <div class="customer-review-header">
+
+                        <div class="review-worker-info">
+
+                            <div class="review-avatar">
+                                ${review.worker.charAt(0)}
+                            </div>
+
+                            <div>
+
+                                <strong>
+                                    ${review.worker}
+                                </strong>
+
+                                <small>
+                                    ${review.service}
+                                </small>
+
+                            </div>
+
+                        </div>
+
+
+                        <span class="review-date">
+                            ${formatDate(review.date)}
+                        </span>
+
+                    </div>
+
+
+                    <div class="review-stars">
+
+                        ${"★".repeat(review.rating)}
+                        <span class="review-rating-number">
+                            ${review.rating}.0
+                        </span>
+
+                    </div>
+
+
+                    <p class="customer-review-text">
+                        ${review.text}
+                    </p>
+
+                `;
+
+
+                container.appendChild(card);
+
+            });
+
+    }
+
+
+    /* ========================================
+       FORMAT DATE
+    ======================================== */
+
+    function formatDate(date) {
+
+        return new Date(date)
+            .toLocaleDateString(
+                "en-IN",
+                {
+                    day: "numeric",
+                    month: "short",
+                    year: "numeric"
+                }
+            );
+
+    }
+
+
+    /* ========================================
+       LOGOUT
+    ======================================== */
+
+    function logout() {
+
+        localStorage.removeItem("token");
+
+        localStorage.removeItem("user");
+
+        window.location.href =
+            "../login.html";
+
+    }
+
+
+    /* ========================================
+       INITIAL LOAD
+    ======================================== */
+
+    displayReviews();
+
+</script>
+
+</body>
+</html>

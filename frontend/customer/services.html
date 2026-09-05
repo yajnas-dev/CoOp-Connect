@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Find Services | Co-Op Connect</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body class="dashboard-body">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+
+        <div class="sidebar-brand">
+            <span class="brand-icon">🤝</span>
+
+            <div>
+                <h2>Co-Op Connect</h2>
+                <small>Customer</small>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+
+            <a href="dashboard.html" class="nav-item">
+                🏠 <span>Dashboard</span>
+            </a>
+
+            <a href="services.html" class="nav-item active">
+                🔧 <span>Find Services</span>
+            </a>
+
+            <a href="workers.html" class="nav-item">
+                👷 <span>Find Workers</span>
+            </a>
+
+            <a href="bookings.html" class="nav-item">
+                📅 <span>My Bookings</span>
+            </a>
+
+            <a href="payments.html" class="nav-item">
+                💳 <span>Payments</span>
+            </a>
+
+            <a href="reviews.html" class="nav-item">
+                ⭐ <span>My Reviews</span>
+            </a>
+
+            <a href="complaints.html" class="nav-item">
+                ⚠️ <span>Complaints</span>
+            </a>
+
+            <a href="profile.html" class="nav-item">
+                👤 <span>My Profile</span>
+            </a>
+
+        </nav>
+
+        <button class="logout-btn" onclick="logout()">
+            🚪 Logout
+        </button>
+
+    </aside>
+
+
+    <!-- Main Content -->
+    <main class="dashboard-main">
+
+        <!-- Header -->
+        <header class="dashboard-header">
+
+            <div>
+                <h1>Find a Service 🔧</h1>
+
+                <p>
+                    Choose the service you need from our verified
+                    cooperative workers.
+                </p>
+            </div>
+
+        </header>
+
+
+        <!-- Search -->
+        <section class="dashboard-search">
+
+            <div class="search-content">
+
+                <h2>Search for a service</h2>
+
+                <p>
+                    Find trusted workers for your household and
+                    community needs.
+                </p>
+
+            </div>
+
+            <div class="search-box">
+
+                <input
+                    type="text"
+                    id="serviceSearch"
+                    placeholder="Search service..."
+                    oninput="filterServices()"
+                >
+
+                <button onclick="filterServices()">
+                    🔍 Search
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- Service Categories -->
+        <section class="dashboard-section">
+
+            <div class="section-header">
+
+                <div>
+                    <h2>Service Categories</h2>
+
+                    <p>
+                        Select a category to find available workers.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="service-list" id="serviceList">
+
+
+                <!-- Electrical -->
+                <div
+                    class="service-large-card"
+                    data-service="electrical"
+                    onclick="selectService('Electrical')"
+                >
+
+                    <div class="large-service-icon">
+                        ⚡
+                    </div>
+
+                    <div class="service-large-content">
+
+                        <h3>Electrical</h3>
+
+                        <p>
+                            Wiring, repairs, switches, fans,
+                            lights and electrical installation.
+                        </p>
+
+                        <span class="worker-count">
+                            👷 24 verified workers
+                        </span>
+
+                    </div>
+
+                    <span class="service-arrow">
+                        →
+                    </span>
+
+                </div>
+
+
+                <!-- Plumbing -->
+                <div
+                    class="service-large-card"
+                    data-service="plumbing"
+                    onclick="selectService('Plumbing')"
+                >
+
+                    <div class="large-service-icon">
+                        🔧
+                    </div>
+
+                    <div class="service-large-content">
+
+                        <h3>Plumbing</h3>
+
+                        <p>
+                            Pipe repairs, leakage, taps,
+                            water connections and maintenance.
+                        </p>
+
+                        <span class="worker-count">
+                            👷 18 verified workers
+                        </span>
+
+                    </div>
+
+                    <span class="service-arrow">
+                        →
+                    </span>
+
+                </div>
+
+
+                <!-- Carpentry -->
+                <div
+                    class="service-large-card"
+                    data-service="carpentry"
+                    onclick="selectService('Carpentry')"
+                >
+
+                    <div class="large-service-icon">
+                        🪚
+                    </div>
+
+                    <div class="service-large-content">
+
+                        <h3>Carpentry</h3>
+
+                        <p>
+                            Furniture repair, doors, windows,
+                            cabinets and woodwork.
+                        </p>
+
+                        <span class="worker-count">
+                            👷 15 verified workers
+                        </span>
+
+                    </div>
+
+                    <span class="service-arrow">
+                        →
+                    </span>
+
+                </div>
+
+
+                <!-- Cleaning -->
+                <div
+                    class="service-large-card"
+                    data-service="cleaning"
+                    onclick="selectService('Cleaning')"
+                >
+
+                    <div class="large-service-icon">
+                        🧹
+                    </div>
+
+                    <div class="service-large-content">
+
+                        <h3>Cleaning</h3>
+
+                        <p>
+                            Home cleaning, deep cleaning,
+                            office cleaning and maintenance.
+                        </p>
+
+                        <span class="worker-count">
+                            👷 32 verified workers
+                        </span>
+
+                    </div>
+
+                    <span class="service-arrow">
+                        →
+                    </span>
+
+                </div>
+
+
+                <!-- Painting -->
+                <div
+                    class="service-large-card"
+                    data-service="painting"
+                    onclick="selectService('Painting')"
+                >
+
+                    <div class="large-service-icon">
+                        🎨
+                    </div>
+
+                    <div class="service-large-content">
+
+                        <h3>Painting</h3>
+
+                        <p>
+                            Interior, exterior, wall painting
+                            and surface finishing.
+                        </p>
+
+                        <span class="worker-count">
+                            👷 12 verified workers
+                        </span>
+
+                    </div>
+
+                    <span class="service-arrow">
+                        →
+                    </span>
+
+                </div>
+
+
+                <!-- Gardening -->
+                <div
+                    class="service-large-card"
+                    data-service="gardening"
+                    onclick="selectService('Gardening')"
+                >
+
+                    <div class="large-service-icon">
+                        🌱
+                    </div>
+
+                    <div class="service-large-content">
+
+                        <h3>Gardening</h3>
+
+                        <p>
+                            Garden maintenance, pruning,
+                            planting and landscaping.
+                        </p>
+
+                        <span class="worker-count">
+                            👷 10 verified workers
+                        </span>
+
+                    </div>
+
+                    <span class="service-arrow">
+                        →
+                    </span>
+
+                </div>
+
+
+                <!-- Caregiving -->
+                <div
+                    class="service-large-card"
+                    data-service="caregiving"
+                    onclick="selectService('Caregiving')"
+                >
+
+                    <div class="large-service-icon">
+                        ❤️
+                    </div>
+
+                    <div class="service-large-content">
+
+                        <h3>Caregiving</h3>
+
+                        <p>
+                            Elder care, patient support,
+                            childcare and daily assistance.
+                        </p>
+
+                        <span class="worker-count">
+                            👷 14 verified workers
+                        </span>
+
+                    </div>
+
+                    <span class="service-arrow">
+                        →
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- No Result -->
+        <div
+            id="noServiceMessage"
+            class="no-service-message"
+            style="display: none;"
+        >
+
+            <div>🔍</div>
+
+            <h3>No services found</h3>
+
+            <p>
+                Try searching for another service.
+            </p>
+
+        </div>
+
+    </main>
+
+
+    <script src="../js/app.js"></script>
+
+    <script>
+
+        function filterServices() {
+
+            const search =
+                document
+                .getElementById("serviceSearch")
+                .value
+                .toLowerCase()
+                .trim();
+
+            const cards =
+                document.querySelectorAll(".service-large-card");
+
+            let found = false;
+
+            cards.forEach(card => {
+
+                const service =
+                    card.dataset.service;
+
+                if (service.includes(search)) {
+
+                    card.style.display = "flex";
+                    found = true;
+
+                } else {
+
+                    card.style.display = "none";
+
+                }
+
+            });
+
+            document.getElementById("noServiceMessage")
+                .style.display = found ? "none" : "block";
+        }
+
+
+        function selectService(service) {
+
+            window.location.href =
+                "workers.html?service=" +
+                encodeURIComponent(service);
+
+        }
+
+
+        function logout() {
+
+            localStorage.removeItem("token");
+            localStorage.removeItem("user");
+
+            window.location.href = "../login.html";
+
+        }
+
+    </script>
+
+</body>
+</html>
